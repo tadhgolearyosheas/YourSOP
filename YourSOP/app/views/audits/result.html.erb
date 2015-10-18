@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <dl class="dl-horizontal">
+    <dt><strong>Topic</strong></dt>
+    <dd><%= @topic.name %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Topic Description</strong></dt>
+    <dd><%= @topic.description %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>SOPs</strong></dt>
+    <dd>
+      <ul>
+        <% @risk.topic.documents.each do |d| %>
+          <li><%= link_to d.title, document_path(d.id), target: "_blank" %></li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Description</strong></dt>
+    <dd><%= raw @risk.desc %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Score</strong></dt>
+    <dd><%= @risk.score %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Details</strong></dt>
+    <dd>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Impact</th>
+            <th>Likelihood</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @risk.risks_details.each do |d| %>
+            <tr>
+              <td><%= d.title %></td>
+              <td><%= risk_impact_to_string d.impact %></td>
+              <td><%= risk_likelihood_to_string d.likelihood %></td>
+              <td><%= d.score %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+
+
+  <%= bootstrap_nested_form_for(@audit, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-11") do |form| %>
+      <%= form.hidden_field :topic_id, value: @topic_id %>
+      <%= form.hidden_field :result, value: :result %>
+       <%= form.alert_message "Please fix the errors below." %>
+
+      <%= form.date_field :start_date, value: @start_date.strftime('%Y-%m-%d'), control_col: "col-sm-3", readonly: true  %>
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="col-sm-2">Description</th>
+              <th class="col-sm-2">Source</th>
+              <th class="col-sm-3">Evidence</th>
+              <th class="col-sm-3">Actions</th>
+              <th class="col-sm-2">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <%= form.fields_for :audits_practices do |p| %>
+              <tr>
+                <td><%= p.object.observation %></td>
+                <td>
+                  <% p.object.documents.each do |s| %>
+                      <%= link_to s.title, document_path(s.id), target: "_blank" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= p.text_area :evidence, hide_label: true, :class => "tinymce form-control", :rows => 6, :cols => 20 %>
+                  <br />
+                  <%= p.file_field :attachment %>
+                </td>
+                <td>
+                  <div class="form-horizontal well ">
+                    <input type="hidden" value="<%= p.object.id %>" />
+                    <%= p.fields_for :audits_practices_actions do |f| %>
+                        <%= f.text_area :action, :rows => 4, :cols => 20, help: "If no action required, leave this empty."  %>
+                        <%= f.collection_select :user_id, @users_to_select, :id, :email, prompt: "Please Select" %>
+                        <%= f.hidden_field :status, value: 0 %>
+                        <% if f.object.persisted? %>
+                          <%= f.check_box :_destroy %>
+                        <% end %>
+                    <% end %>
+                    <%= p.link_to_add "Add", :audits_practices_actions %>
+
+                 </div>
+                </td>
+                <td><%= p.select :result, @audits_practices_result, hide_label: true %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <div class="alert alert-dismissible alert-danger" id="alert">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p>The final result should not be Green as one or more practices are not Green!</p>
+    </div>
+    <%= form.date_select :end_date, value: :end_date, start_year: Date.current.year, use_month_numbers: true, control_col: "col-sm-3"  %>
+    <%= form.select :result, @audits_practices_result, control_col: "col-sm-3" %>
+
+      <%= form.form_group do %>
+        <%= form.submit "Publish Audit", class: "btn btn-primary" %>
+        <%= form.submit "Temparory Save", class: "btn btn-default" %>
+      <% end %>
+    <% end %>
+
+</div>
+
+

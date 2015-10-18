@@ -1,0 +1,48 @@
+<%= bootstrap_nested_form_for(risk, layout: :horizontal, label_col: "col-sm-1") do |form| %>
+    <%= form.hidden_field :user_id, value: current_user_id %>
+    <%= form.hidden_field :topic_id, value: @topic.id %>
+    <div class="row"> 
+        <label class="control-label col-sm-1" for="">Risks:</label>
+        <div class="col-sm-11">
+                <%= form.fields_for :risks_details do |f| %>
+                    <div class="well col-sm-12 nested_risk_form">
+                        <%= f.text_area :title ,:rows => 2 %>
+                        <% title = f.object.title == nil ? '' : f.object.title %>
+                        <% 
+                            i = risk_impact.where(name: title)
+                            if i.count == 0
+                                i = risk_impact.where(name: '')
+                            end
+                        %>
+                        <%= f.collection_radio_buttons :impact, i, :value, :desc %>
+                        <%= f.select :likelihood, risk_likelihood  %>
+                        <%= f.text_field :score, :readonly => true %>
+                        <%= f.check_box :_destroy %>
+                    </div>
+                <% end %>
+                <%= form.link_to_add "Add", :risks_details %>
+                
+        </div>
+       
+    </div>
+    <%= form.text_field :score, :readonly => true %>
+
+    <div class="form-group">
+        <label class="control-label col-sm-1" for="">Documents</label>
+        <div class="col-sm-10">
+            <ul>
+                <% documents.where(minor_version: 0).each do |d| %>
+                  <li><%= link_to d.title + ' (' + d.major_version + '.0)', document_path(d.id), target: "_blank" %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <%#= form.collection_select :document_ids, Document.where(status: 3).order(:title), :id, :title, {}, {:multiple => true } %>
+
+    <%= form.text_area :desc, :class => "tinymce form-control", :rows => 10, :cols => 120, label: "Rational for Risk Assessment" %>
+    <%= tinymce %> 
+    <%= form.form_group do %>
+      <%= form.submit "Publish", class: "btn btn-primary", data: {disable_with: "Saving..."} %>
+      <%= form.submit "Save as Draft", class: "btn btn-default", data: {disable_with: "Saving..."} %>
+    <% end %>
+<% end %>

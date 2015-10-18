@@ -1,0 +1,21 @@
+<div class="checkbox">
+   <label>
+        <input class="select_all" type="checkbox"/>All users
+   </label>
+</div>
+<div>
+<% users.each do |user| %>
+    <div class="col-sm-4">
+      <div class="checkbox">
+        <label>
+           <input name="[<%= params_hash %>][<%= user.id %>]" type="checkbox" 
+               <% if selected_users.include?(user.id) %>
+               checked
+               <% end %>
+               />
+            <%= user.email %>
+        </label>
+      </div>
+    </div>
+<% end %>
+</div>

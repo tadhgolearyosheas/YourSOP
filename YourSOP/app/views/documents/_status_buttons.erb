@@ -1,0 +1,16 @@
+  <div class="col-md-2">
+    <%= form_for :document, method: :put, remote: true do |f| %>
+      <div class="btn-group-vertical" id="status_filter_buttons">
+            <br />
+           <%= f.submit "Draft", class: "btn btn-info", align: "right", name: "status", id: "draft_state" %>
+           <%= f.submit "For review", class: "btn btn-info", name: "status", id: "review_state" %>
+           <%= f.submit "For approval", class: "btn btn-info", name: "status", id: "approval_state" %>                           
+           <%= f.submit "Effective", class: "btn btn-info", name: "status", id: "effective_state" %>
+      </div>
+    <% end %>    
+  </div>
+  <div class="col-md-10" id="documents_list">
+    <%= render partial: 'list', locals: {documents: @documents} %>  
+  </div>
+
+

@@ -1,0 +1,77 @@
+<br />
+    <table class="table tablesorter">
+      <thead>
+      <tr>
+        <th>
+          Document
+        </th>
+        <th>
+          Created By
+        </th>
+        <th>
+          Created
+        </th>
+        <th>
+          Updated
+        </th>
+        <th>
+          Topic
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Version
+        </th>
+        <th>
+          Review Date
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% documents.each do |d| %>
+          <tr>
+            <td>
+              <%= link_to d.title, document_path(d.id) %>
+            </td>
+            <td>
+              <%= d.user.email %>
+            </td>
+            <td>
+              <%= d.created_at %>
+            </td>
+            <td>
+              <%= d.updated_at %>
+            </td>
+            <td>
+              <% if d.topic == nil %>
+                Unspecified
+              <% else %>
+                <%= d.topic.name %>
+              <% end%>
+            </td>
+            <td>
+              <%= status_to_string d.status %>
+            </td>
+            <td>
+              <%= d.major_version %>.<%= d.minor_version %>
+            </td>
+            <td>
+              <%= d.review_date %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_document_path(:id => d.id), :class => "btn-link" if d.status == 0 and d.user_id == @current_user.id %>
+              <%= link_to "Review", document_path(:id => d.id), :class => "btn-link" if d.status == 1 and d.reviews.where(status: 0,  user_id: @current_user.id).count > 0 %>
+              <%= link_to "Approve", document_path(:id => d.id), :class => "btn-link" if d.status == 2 and d.approvals.where(status: 0,  user_id: @current_user.id).count > 0 %>
+              <%= link_to "Sign Off", document_path(:id => d.id), :class => "btn-link" if d.status == 3 and d.trainees.where(status: 0,  user_id: @current_user.id).count > 0 %>
+                <%= link_to "Revert To Draft", revert_to_draft_path(:id => d.id), method: :post, remote: true, data: { confirm: 'Are you sure?' }, :class => "btn-link" if d.status == 3 and d.user_id == @current_user.id  %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+

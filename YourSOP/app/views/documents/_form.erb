@@ -1,0 +1,89 @@
+  <%= bootstrap_form_for document, layout: :horizontal, label_col: "col-sm-1", :html => { :multipart => true } do |form| %>
+    <%= form.alert_message "Please fix the errors below." %>
+    <%= form.hidden_field :user_id, value: current_user_id %>
+    <%= form.text_field :title %>
+    <%= form.date_select :review_date, start_year: Date.current.year %>
+    <%= form.collection_select(:topic_id, topics, :id, :name, prompt: "Please Select") %>
+    <br />
+
+    <%= form.file_field :doc %>
+
+    <%= form.text_area :content, :class => "tinymce", :rows => 10, :cols => 120 %>
+    <%= tinymce %>
+
+    <% if @document.do_update == true %>
+      <%= form.text_field :change_control, :value => "" %>
+    <% else %>
+      <%= form.text_field :change_control %>
+    <% end %>
+
+
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">Select users to review the document</div>
+        <div class="panel-body">
+            <% if @edit %>
+              <%= render partial: 'user_select', locals: {params_hash: 'reviews', selected_users: @existing_reviewer_ids, users: @users_to_select} %>
+            <% else %>
+              <%= render partial: 'user_select', locals: {params_hash: 'reviews', selected_users: [], users: @users_to_select} %>
+            <% end %>
+        </div>
+    </div>        
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">Select users to approve the document</div>
+        <div class="panel-body">
+             <% if @edit %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'approvals', selected_users: @existing_approver_ids, users: @users_to_select} %>
+              <% else %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'approvals', selected_users: [], users: @users_to_select} %>
+              <% end %>
+        </div>
+    </div>
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">Users need sign off</div>
+        <div class="panel-body">
+             <% if @edit %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'trainees', selected_users: @existing_traineer_ids, users: @users_to_select} %>
+              <% else %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'trainees', selected_users: [], users: @users_to_select} %>
+              <% end %>
+        </div>
+    </div>
+
+    <%= hidden_field_tag('document[assigned_to_all]', value: 'true') %>
+    <div class="btn-group field" style="display:none">
+      <label class="btn btn-warning ">
+        <%#= radio_button_tag('document[assigned_to_all]', 'true', ((@edit && @document.assigned_to_all) || @edit != true) ? true : false) %>
+        This document is visible to all users.
+      </label>
+      <label class="btn btn-warning ">
+        <%#= radio_button_tag('document[assigned_to_all]', 'false', (@edit && !@document.assigned_to_all) ? true : false) %>
+        This document is visible to specific users.
+      </label>
+    </div>
+    <br />
+    <div class="panel panel-default" id="user_selection" style="display: none;">
+        <div class="panel-heading">Choose which users the document is visible for</div>
+        <div class="panel-body">
+             <% if @edit %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'readers', selected_users: @existing_reader_ids, users: @users_to_select} %>
+              <% else %>
+                  <%= render partial: 'user_select', locals: {params_hash: 'readers', selected_users: [], users: @users_to_select} %>
+              <% end %>
+        </div>
+    </div>
+    
+    <br />
+    <%= form.form_group do %>
+      <%= form.submit "Send For Review", :name => 'send_for_review', class: "btn btn-primary", data: {disable_with: "Saving..."} %>
+      <!--% if params[:reviews] != nil %>
+      <!--% @existing_reviewer_ids.each do |er| %>
+      <!--% Notifier.do_action(User.find(er).email,@document.title,User.find(@document.user_id).email,'Review').deliver_now %>
+      <!--% end %>
+      <!--% end %-->
+      <%= form.submit "Save as Draft", class: "btn btn-default", data: {disable_with: "Saving..."} %>
+    <% end %>
+<% end %>

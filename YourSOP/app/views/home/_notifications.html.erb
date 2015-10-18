@@ -1,0 +1,10 @@
+<% collection.each do |c| %>
+	<% if c.is_unread?(@current_user) %>
+		<li class="list-group-item clearfix">
+		  <p><%= c.subject %></p>
+		  <p><%= raw c.last_message.body %></p>
+		  <%= link_to '×', mark_as_read_home_path(c),
+		                    class: 'close', method: :post %> 
+		</li>
+	<% end %>
+<% end %>

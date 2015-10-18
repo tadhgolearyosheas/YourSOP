@@ -1,0 +1,60 @@
+<h1>Users</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>
+      Email
+    </th>
+    <th>
+      User Type
+    </th>
+    <th style="width: 10%;">
+      <!-- Option -->
+    </th>
+    <th style="width: 10%;">
+      <!-- Option -->
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @organisation_users.each do |u| %>
+      <tr>
+        <td>
+          <%= u[:user].email %>
+        </td>
+        <td>
+          <%= user_type_to_string u[:organisation_user].user_type %>
+          <% if !u[:organisation_user].accepted %>
+            (pending)
+          <% end %>
+        </td>
+        <%# owners can remove any other users AND invitations they created %>
+        <% if (is_owner(@organisation_user_type) && is_owner(u[:organisation_user].user_type) == false) || (current_user.id == u[:organisation_user].inviter_id && u[:organisation_user].accepted == false) %>
+            <td>
+              <%= link_to "Edit", {:controller => "organisations", :action => "edit_user", :user_id => u[:user].id} %>
+             </td>
+            <td>
+              <% if u[:user].last_seen_at == nil || u[:user].last_seen_at < 30.minute.ago %>
+              <%= link_to "Remove", remove_user_organisations_path + "?user_id=#{u[:user].id}", method: :delete, data: { confirm: 'Are you sure you want to remove this user?', class: 'delete-link' } %>
+             
+                  
+              <% else %>
+              User is currently online
+              <% end %>
+            </td>
+        <% else %>
+            <td colspan="2"></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<nav class="navbar navbar-inverse">
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'Invite users', invite_organisations_path %></li>
+      </ul>
+    </div>
+</nav>

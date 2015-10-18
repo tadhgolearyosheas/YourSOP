@@ -1,0 +1,17 @@
+<%= bootstrap_form_for @organisation_user, :url => {:action => "update_user", :user_id => @user_id} do |f| %>
+	
+  <%# <%= form.autocomplete_field :user_email, autocomplete_user_email_organisations_path,
+  <%#   :size => 30 %>
+
+  <%# <%= form.select(:invitedID, @users, {:prompt => "select user to invite"}, { :multiple => true, :size => 20 } ) %>
+
+
+
+  <%= f.select :user_type, @typesOptions %>
+
+   <%= f.form_group do %>
+    <%= f.submit "update", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>
+

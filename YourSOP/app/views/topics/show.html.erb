@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h1><%= @topic.name %></h1>
+</div>
+
+ <dl class="dl-horizontal">
+    <dt><strong>Description:</strong></dt>
+    <dd><%= @topic.description %></dd>
+ </dl>
+
+<%= link_to 'Back', topics_path, class: "btn btn-primary"  %>

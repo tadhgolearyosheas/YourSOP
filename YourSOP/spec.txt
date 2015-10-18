@@ -1,0 +1,648 @@
+C:/RailsInstaller/Ruby2.1.0/bin/ruby.exe -I'C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/rspec-core-3.2.3/lib';'C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/rspec-support-3.2.2/lib' 'C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/rspec-core-3.2.3/exe/rspec' --pattern 'spec/**{,/*/**}/*_spec.rb'
+FFFFFFFFFFFFF****FFFFFFF**F*************FFFFFFFFFFFFFFFFFFFFFF..**F******************........................................................................................................................FFFFFFFFFF..............FFFFFFFF******FFF.
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) AuditsController POST #create with valid params assigns a newly created audit_scope as @audit_scope
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audit_scopes_controller_spec.rb:78
+
+  2) AuditsController POST #create with valid params redirects to the created audit_scope
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audit_scopes_controller_spec.rb:84
+
+  3) AuditsController POST #create with invalid params assigns a newly created but unsaved audit_scope as @audit_scope
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/audit_scopes_controller_spec.rb:91
+
+  4) AuditsController POST #create with invalid params re-renders the 'new' template
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/audit_scopes_controller_spec.rb:96
+
+  5) AuditsController GET #index assigns all audits as @audits
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:40
+
+  6) AuditsController GET #show assigns the requested audit as @audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:48
+
+  7) AuditsController GET #edit assigns the requested audit as @audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:63
+
+  8) AuditsController POST #create with valid params creates a new Audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:72
+
+  9) AuditsController POST #create with valid params assigns a newly created audit as @audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:78
+
+  10) AuditsController POST #create with valid params redirects to the created audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:84
+
+  11) AuditsController POST #create with invalid params assigns a newly created but unsaved audit as @audit
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/audits_controller_spec.rb:91
+
+  12) AuditsController POST #create with invalid params re-renders the 'new' template
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/audits_controller_spec.rb:96
+
+  13) AuditsController PUT #update with valid params updates the requested audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:109
+
+  14) AuditsController PUT #update with valid params assigns the requested audit as @audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:116
+
+  15) AuditsController PUT #update with valid params redirects to the audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:122
+
+  16) AuditsController PUT #update with invalid params assigns the audit as @audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:130
+
+  17) AuditsController PUT #update with invalid params re-renders the 'edit' template
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:136
+
+  18) AuditsController DELETE #destroy destroys the requested audit
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:145
+
+  19) AuditsController DELETE #destroy redirects to the audits list
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/audits_controller_spec.rb:152
+
+  20) TopicsController GET #index assigns all topics as @topics
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:40
+
+  21) TopicsController GET #show assigns the requested topic as @topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:48
+
+  22) TopicsController GET #edit assigns the requested topic as @topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:63
+
+  23) TopicsController POST #create with valid params creates a new Topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:72
+
+  24) TopicsController POST #create with valid params assigns a newly created topic as @topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:78
+
+  25) TopicsController POST #create with valid params redirects to the created topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:84
+
+  26) TopicsController POST #create with invalid params assigns a newly created but unsaved topic as @topic
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/topics_controller_spec.rb:91
+
+  27) TopicsController POST #create with invalid params re-renders the 'new' template
+     # Add a hash of attributes invalid for your model
+     # ./spec/controllers/topics_controller_spec.rb:96
+
+  28) TopicsController PUT #update with valid params updates the requested topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:109
+
+  29) TopicsController PUT #update with valid params assigns the requested topic as @topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:116
+
+  30) TopicsController PUT #update with valid params redirects to the topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:122
+
+  31) TopicsController PUT #update with invalid params assigns the topic as @topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:130
+
+  32) TopicsController PUT #update with invalid params re-renders the 'edit' template
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:136
+
+  33) TopicsController DELETE #destroy destroys the requested topic
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:145
+
+  34) TopicsController DELETE #destroy redirects to the topics list
+     # Add a hash of attributes valid for your model
+     # ./spec/controllers/topics_controller_spec.rb:152
+
+  35) AuditsHelper add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/helpers/audit_scopes_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/audit_scopes_helper_spec.rb:14
+
+  36) AuditsHelper add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/helpers/audits_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/audits_helper_spec.rb:14
+
+  37) DashboardHelper add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/helpers/dashboard_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/dashboard_helper_spec.rb:14
+
+  38) HomeHelper add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/helpers/home_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/home_helper_spec.rb:14
+
+  39) TopicsHelper add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/helpers/topics_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/topics_helper_spec.rb:14
+
+  40) document_topics/create.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/create.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/create.html.erb_spec.rb:4
+
+  41) document_topics/destroy.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/destroy.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/destroy.html.erb_spec.rb:4
+
+  42) document_topics/edit.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/edit.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/edit.html.erb_spec.rb:4
+
+  43) document_topics/index.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/index.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/index.html.erb_spec.rb:4
+
+  44) document_topics/new.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/new.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/new.html.erb_spec.rb:4
+
+  45) document_topics/update.html.erb add some examples to (or delete) C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/spec/views/document_topics/update.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/document_topics/update.html.erb_spec.rb:4
+
+Failures:
+
+  1) ApplicationController#is_owner? is true when the type is the user type
+     Failure/Error: let(:type) { '2' }
+       `let` is not available from within an example (e.g. an `it` block) or from constructs that run in the scope of an example (e.g. `before`, `let`, etc). It is only available on an example group (e.g. a `describe` or `context` block).
+     # ./spec/controllers/application_controller_spec.rb:7:in `block (3 levels) in <top (required)>'
+
+  2) ApplicationController#is_quality? is true when the type is the user type
+     Failure/Error: let(:type) { '0' }
+       `let` is not available from within an example (e.g. an `it` block) or from constructs that run in the scope of an example (e.g. `before`, `let`, etc). It is only available on an example group (e.g. a `describe` or `context` block).
+     # ./spec/controllers/application_controller_spec.rb:14:in `block (3 levels) in <top (required)>'
+
+  3) ApplicationController#is_basic? is true when the type is the user type
+     Failure/Error: let(:type) { '1' }
+       `let` is not available from within an example (e.g. an `it` block) or from constructs that run in the scope of an example (e.g. `before`, `let`, etc). It is only available on an example group (e.g. a `describe` or `context` block).
+     # ./spec/controllers/application_controller_spec.rb:21:in `block (3 levels) in <top (required)>'
+
+  4) ApplicationController#set_current_organisation_id? set the current_organisation_id
+     Failure/Error: session[:current_organisation_id] = org_id
+     NameError:
+       undefined local variable or method `org_id' for #<RSpec::ExampleGroups::ApplicationController::SetCurrentOrganisationId:0x823b7c8>
+     # ./spec/controllers/application_controller_spec.rb:28:in `block (3 levels) in <top (required)>'
+
+  5) ApplicationController#get_current_organisation? return nil if current_organisation_id is nil
+     Failure/Error: expect(response).to eq("nil")
+       
+       expected: "nil"
+            got: #<ActionController::TestResponse:0x8230b60 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x8230ab8>, @stream=#<ActionDispatch::Response::Buffer:0x8230a28 @response=#<ActionController::TestResponse:0x8230b60 ...>, @buf=[], @closed=false>, @header={"X-Frame-Options"=>"SAMEORIGIN", "X-XSS-Protection"=>"1; mode=block", "X-Content-Type-Options"=>"nosniff"}, @status=200, @sending_file=false, @blank=false, @cv=#<MonitorMixin::ConditionVariable:0x8230a10 @monitor=#<ActionController::TestResponse:0x8230b60 ...>, @cond=#<Thread::ConditionVariable:0x82309f8>>, @committed=false, @sending=false, @sent=false, @content_type=nil, @charset=nil, @cache_control={}, @etag=nil, @request=#<ActionController::TestRequest:0x8230e30 @env={"rack.version"=>[1, 3], "rack.input"=>#<StringIO:0x8658930>, "rack.errors"=>#<StringIO:0x8658990>, "rack.multithread"=>true, "rack.multiprocess"=>true, "rack.run_once"=>false, "REQUEST_METHOD"=>"GET", "SERVER_NAME"=>"example.org", "SERVER_PORT"=>"80", "QUERY_STRING"=>"", "rack.url_scheme"=>"http", "HTTPS"=>"off", "SCRIPT_NAME"=>"", "CONTENT_LENGTH"=>"0", "HTTP_HOST"=>"test.host", "REMOTE_ADDR"=>"0.0.0.0", "HTTP_USER_AGENT"=>"Rails Testing", "action_dispatch.routes"=>#<ActionDispatch::Routing::RouteSet:0x61f6bf0>, "action_dispatch.parameter_filter"=>[:password], "action_dispatch.redirect_filter"=>[], "action_dispatch.secret_token"=>nil, "action_dispatch.secret_key_base"=>"b3a1b76b84be36e4276ec9c28843417db20c37d08ac343e3e923b48cf2d66c7c0b7881e1f547b64661bf0dad8fc53d03d3cc171844a8d38d06bee422bbb60258", "action_dispatch.show_exceptions"=>false, "action_dispatch.show_detailed_exceptions"=>true, "action_dispatch.logger"=>#<ActiveSupport::Logger:0x5d46638 @progname=nil, @level=0, @default_formatter=#<Logger::Formatter:0x5d46578 @datetime_format=nil>, @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x61f7568 @datetime_format=nil>, @logdev=#<Logger::LogDevice:0x5d46548 @shift_size=nil, @shift_age=nil, @filename=nil, @dev=#<File:C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/log/test.log>, @mutex=#<Logger::LogDevice::LogDeviceMutex:0x5d46530 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x5d464d0>>>>, "action_dispatch.backtrace_cleaner"=>#<Rails::BacktraceCleaner:0x82cd0d0 @filters=[#<Proc:0x82cd028@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:14>, #<Proc:0x82cd010@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:15>, #<Proc:0x82ccff8@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:16>, #<Proc:0x82ccd88@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:29>], @silencers=[#<Proc:0x82ccd70@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:19>], @root="C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/">, "action_dispatch.key_generator"=>#<ActiveSupport::CachingKeyGenerator:0x7d96b38 @key_generator=#<ActiveSupport::KeyGenerator:0x7d96b50 @secret="b3a1b76b84be36e4276ec9c28843417db20c37d08ac343e3e923b48cf2d66c7c0b7881e1f547b64661bf0dad8fc53d03d3cc171844a8d38d06bee422bbb60258", @iterations=1000>, @cache_keys=#<ThreadSafe::Cache:0x7d96b20 @backend={"signed_global_ids64"=>"X\xBC?\xD2\xF3\x87\x89+\xBA\xE8k\xDC8\xA91o'\xF5\xE0:YU\x92t\xE8\x1Db\xE5\xC4\x99\xDC1j6&\xF9'\xCB`\xE6\xB0t\xA5x\xF9\x9A<\x8EfA\x1A\x1C\xF9\xC1\xB2\x11\xDBN\xA0\xCA\xA2W\xCA\x87"}, @default_proc=nil>>, "action_dispatch.http_auth_salt"=>"http authentication", "action_dispatch.signed_cookie_salt"=>"signed cookie", "action_dispatch.encrypted_cookie_salt"=>"encrypted cookie", "action_dispatch.encrypted_signed_cookie_salt"=>"signed encrypted cookie", "action_dispatch.cookies_serializer"=>:json, "action_dispatch.cookies_digest"=>nil, "rack.session"=>{}, "rack.session.options"=>{:key=>"rack.session", :path=>"/", :domain=>nil, :expire_after=>nil, :secure=>false, :httponly=>true, :defer=>false, :renew=>false, :sidbits=>128, :cookie_only=>true, :secure_random=>SecureRandom, :id=>"c81d5e10a2bd495f1368ef224542ff9b"}, "action_controller.instance"=>#<ApplicationController:0x8230ef0 @_action_has_layout=true, @_routes=nil, @_headers={"Content-Type"=>"text/html"}, @_status=200, @_request=#<ActionController::TestRequest:0x8230e30 ...>, @_response=nil, @_params={}>, "warden"=>Warden::Proxy:68255940 @config={:default_scope=>:user, :scope_defaults=>{}, :default_strategies=>{:user=>[:rememberable, :database_authenticatable]}, :intercept_401=>false, :failure_app=>#<Devise::Delegator:0x8252d60>}}, @filtered_parameters=nil, @filtered_env=nil, @filtered_path=nil, @protocol=nil, @port=nil, @method=nil, @request_method=nil, @remote_ip=nil, @original_fullpath=nil, @fullpath=nil, @ip=nil, @uuid=nil>>
+       
+       (compared using ==)
+     # ./spec/controllers/application_controller_spec.rb:36:in `block (3 levels) in <top (required)>'
+
+  6) ApplicationController#setup_header? should return false if the current organization is nil
+     Failure/Error: expect(response).to eq("false")
+       
+       expected: "false"
+            got: #<ActionController::TestResponse:0x8211888 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x8211810>, @stream=#<ActionDispatch::Response::Buffer:0x82117b0 @response=#<ActionController::TestResponse:0x8211888 ...>, @buf=[], @closed=false>, @header={"X-Frame-Options"=>"SAMEORIGIN", "X-XSS-Protection"=>"1; mode=block", "X-Content-Type-Options"=>"nosniff"}, @status=200, @sending_file=false, @blank=false, @cv=#<MonitorMixin::ConditionVariable:0x8211798 @monitor=#<ActionController::TestResponse:0x8211888 ...>, @cond=#<Thread::ConditionVariable:0x8211780>>, @committed=false, @sending=false, @sent=false, @content_type=nil, @charset=nil, @cache_control={}, @etag=nil, @request=#<ActionController::TestRequest:0x8211a50 @env={"rack.version"=>[1, 3], "rack.input"=>#<StringIO:0x8658930>, "rack.errors"=>#<StringIO:0x8658990>, "rack.multithread"=>true, "rack.multiprocess"=>true, "rack.run_once"=>false, "REQUEST_METHOD"=>"GET", "SERVER_NAME"=>"example.org", "SERVER_PORT"=>"80", "QUERY_STRING"=>"", "rack.url_scheme"=>"http", "HTTPS"=>"off", "SCRIPT_NAME"=>"", "CONTENT_LENGTH"=>"0", "HTTP_HOST"=>"test.host", "REMOTE_ADDR"=>"0.0.0.0", "HTTP_USER_AGENT"=>"Rails Testing", "action_dispatch.routes"=>#<ActionDispatch::Routing::RouteSet:0x61f6bf0>, "action_dispatch.parameter_filter"=>[:password], "action_dispatch.redirect_filter"=>[], "action_dispatch.secret_token"=>nil, "action_dispatch.secret_key_base"=>"b3a1b76b84be36e4276ec9c28843417db20c37d08ac343e3e923b48cf2d66c7c0b7881e1f547b64661bf0dad8fc53d03d3cc171844a8d38d06bee422bbb60258", "action_dispatch.show_exceptions"=>false, "action_dispatch.show_detailed_exceptions"=>true, "action_dispatch.logger"=>#<ActiveSupport::Logger:0x5d46638 @progname=nil, @level=0, @default_formatter=#<Logger::Formatter:0x5d46578 @datetime_format=nil>, @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x61f7568 @datetime_format=nil>, @logdev=#<Logger::LogDevice:0x5d46548 @shift_size=nil, @shift_age=nil, @filename=nil, @dev=#<File:C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/log/test.log>, @mutex=#<Logger::LogDevice::LogDeviceMutex:0x5d46530 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x5d464d0>>>>, "action_dispatch.backtrace_cleaner"=>#<Rails::BacktraceCleaner:0x82cd0d0 @filters=[#<Proc:0x82cd028@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:14>, #<Proc:0x82cd010@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:15>, #<Proc:0x82ccff8@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:16>, #<Proc:0x82ccd88@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:29>], @silencers=[#<Proc:0x82ccd70@C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/backtrace_cleaner.rb:19>], @root="C:/Users/GOPIKRISHN/Desktop/testing/SaaSProject/">, "action_dispatch.key_generator"=>#<ActiveSupport::CachingKeyGenerator:0x7d96b38 @key_generator=#<ActiveSupport::KeyGenerator:0x7d96b50 @secret="b3a1b76b84be36e4276ec9c28843417db20c37d08ac343e3e923b48cf2d66c7c0b7881e1f547b64661bf0dad8fc53d03d3cc171844a8d38d06bee422bbb60258", @iterations=1000>, @cache_keys=#<ThreadSafe::Cache:0x7d96b20 @backend={"signed_global_ids64"=>"X\xBC?\xD2\xF3\x87\x89+\xBA\xE8k\xDC8\xA91o'\xF5\xE0:YU\x92t\xE8\x1Db\xE5\xC4\x99\xDC1j6&\xF9'\xCB`\xE6\xB0t\xA5x\xF9\x9A<\x8EfA\x1A\x1C\xF9\xC1\xB2\x11\xDBN\xA0\xCA\xA2W\xCA\x87"}, @default_proc=nil>>, "action_dispatch.http_auth_salt"=>"http authentication", "action_dispatch.signed_cookie_salt"=>"signed cookie", "action_dispatch.encrypted_cookie_salt"=>"encrypted cookie", "action_dispatch.encrypted_signed_cookie_salt"=>"signed encrypted cookie", "action_dispatch.cookies_serializer"=>:json, "action_dispatch.cookies_digest"=>nil, "rack.session"=>{}, "rack.session.options"=>{:key=>"rack.session", :path=>"/", :domain=>nil, :expire_after=>nil, :secure=>false, :httponly=>true, :defer=>false, :renew=>false, :sidbits=>128, :cookie_only=>true, :secure_random=>SecureRandom, :id=>"42454971a872c54f5cc2efc3835b9e7e"}, "action_controller.instance"=>#<ApplicationController:0x8211ae0 @_action_has_layout=true, @_routes=nil, @_headers={"Content-Type"=>"text/html"}, @_status=200, @_request=#<ActionController::TestRequest:0x8211a50 ...>, @_response=nil, @_params={}>, "warden"=>Warden::Proxy:68192112 @config={:default_scope=>:user, :scope_defaults=>{}, :default_strategies=>{:user=>[:rememberable, :database_authenticatable]}, :intercept_401=>false, :failure_app=>#<Devise::Delegator:0x8252d60>}}, @filtered_parameters=nil, @filtered_env=nil, @filtered_path=nil, @protocol=nil, @port=nil, @method=nil, @request_method=nil, @remote_ip=nil, @original_fullpath=nil, @fullpath=nil, @ip=nil, @uuid=nil>>
+       
+       (compared using ==)
+     # ./spec/controllers/application_controller_spec.rb:43:in `block (3 levels) in <top (required)>'
+
+  7) ApplicationController#setup_header? should success when data is right
+     Failure/Error: ou = assigns[:user=>current_user,:organisation=>@current_organisation]
+     NameError:
+       undefined local variable or method `current_user' for #<RSpec::ExampleGroups::ApplicationController::SetupHeader:0x81ff3d8>
+     # ./spec/controllers/application_controller_spec.rb:48:in `block (3 levels) in <top (required)>'
+
+  8) ApplicationController#check_current_organisation? should select a organization when the get_current_organisation is nil 
+     Failure/Error: expect(response).to redirect_to (root_path(assigns(:notice=>'You must select an organisation before viewing documents')))
+       Expected response to be a <redirect>, but was <200>
+     # ./spec/controllers/application_controller_spec.rb:56:in `block (3 levels) in <top (required)>'
+
+  9) ApplicationController#check_current_user_is_owner? should notice cannot manage document types when user is not owner
+     Failure/Error: user1 = assigns[:user=>current_user,:organisation=>@current_organisation.user_type]
+     NameError:
+       undefined local variable or method `current_user' for #<RSpec::ExampleGroups::ApplicationController::CheckCurrentUserIsOwner:0x81d1bb0>
+     # ./spec/controllers/application_controller_spec.rb:62:in `block (3 levels) in <top (required)>'
+
+  10) AuditsController GET #index assigns all audit_scopes as @audit_scopes
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:41:in `block (3 levels) in <top (required)>'
+
+  11) AuditsController GET #show assigns the requested audit_scope as @audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:49:in `block (3 levels) in <top (required)>'
+
+  12) AuditsController GET #edit assigns the requested audit_scope as @audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:64:in `block (3 levels) in <top (required)>'
+
+  13) AuditsController POST #create with valid params creates a new AuditScope
+     Failure/Error: }.to change(AuditScope, :count).by(1)
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:75:in `block (4 levels) in <top (required)>'
+
+  14) AuditsController PUT #update with valid params updates the requested audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:110:in `block (4 levels) in <top (required)>'
+
+  15) AuditsController PUT #update with valid params assigns the requested audit_scope as @audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:117:in `block (4 levels) in <top (required)>'
+
+  16) AuditsController PUT #update with valid params redirects to the audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:123:in `block (4 levels) in <top (required)>'
+
+  17) AuditsController PUT #update with invalid params assigns the audit_scope as @audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:131:in `block (4 levels) in <top (required)>'
+
+  18) AuditsController PUT #update with invalid params re-renders the 'edit' template
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:137:in `block (4 levels) in <top (required)>'
+
+  19) AuditsController DELETE #destroy destroys the requested audit_scope
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:146:in `block (3 levels) in <top (required)>'
+
+  20) AuditsController DELETE #destroy redirects to the audit_scopes list
+     Failure/Error: audit_scope = AuditScope.create! valid_attributes
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/controllers/audit_scopes_controller_spec.rb:153:in `block (3 levels) in <top (required)>'
+
+  21) AuditsController GET #new assigns a new audit as @audit
+     Failure/Error: expect(assigns(:audit)).to be_a_new(audit)
+     NameError:
+       undefined local variable or method `audit' for #<RSpec::ExampleGroups::AuditsController_2::GETNew:0x8034978>
+     # ./spec/controllers/audits_controller_spec.rb:58:in `block (3 levels) in <top (required)>'
+
+  22) DocumentsController GET #index set document filter when it is empty
+     Failure/Error: get_document_filter == nil
+     NameError:
+       undefined local variable or method `get_document_filter' for #<RSpec::ExampleGroups::DocumentsController::GETIndex:0x8550fc0>
+     # ./spec/controllers/documents_controller_spec.rb:8:in `block (3 levels) in <top (required)>'
+
+  23) DocumentsController GET #index set status filter when it is empty
+     Failure/Error: get_status_filter == nil
+     NameError:
+       undefined local variable or method `get_status_filter' for #<RSpec::ExampleGroups::DocumentsController::GETIndex:0x84a9cb0>
+     # ./spec/controllers/documents_controller_spec.rb:14:in `block (3 levels) in <top (required)>'
+
+  24) DocumentsController GET #index renders the index template
+     Failure/Error: expect(response).to render_template("index")
+       expecting <"index"> but rendering with <[]>
+     # ./spec/controllers/documents_controller_spec.rb:21:in `block (3 levels) in <top (required)>'
+
+  25) DocumentsController GET #show renders the show template
+     Failure/Error: get :setup_show
+     ActionController::UrlGenerationError:
+       No route matches {:action=>"setup_show", :controller=>"documents"}
+     # ./spec/controllers/documents_controller_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  26) DocumentsController GET #new can not create documents when the user is basic user
+     Failure/Error: user1 = assigns[:user=>current_user[0],:organisation=>get_current_organisation[0]]
+     NameError:
+       undefined local variable or method `current_user' for #<RSpec::ExampleGroups::DocumentsController::GETNew:0x83d14b8>
+     # ./spec/controllers/documents_controller_spec.rb:34:in `block (3 levels) in <top (required)>'
+
+  27) DocumentsController GET #create can not create documents when the document already exist
+     Failure/Error: @document = Document.new(document_params)
+     NameError:
+       undefined local variable or method `document_params' for #<RSpec::ExampleGroups::DocumentsController::GETCreate:0x8399a48>
+     # ./spec/controllers/documents_controller_spec.rb:43:in `block (3 levels) in <top (required)>'
+
+  28) DocumentsController GET #create return to index when document was created
+     Failure/Error: @document = Document.new(document_params)
+     NameError:
+       undefined local variable or method `document_params' for #<RSpec::ExampleGroups::DocumentsController::GETCreate:0x8389350>
+     # ./spec/controllers/documents_controller_spec.rb:43:in `block (3 levels) in <top (required)>'
+
+  29) DocumentsController GET #edit can not edit document when you are not the editor 
+     Failure/Error: assigns[:user=>current_user] != document.user
+     NameError:
+       undefined local variable or method `current_user' for #<RSpec::ExampleGroups::DocumentsController::GETEdit:0x8327688>
+     # ./spec/controllers/documents_controller_spec.rb:68:in `block (3 levels) in <top (required)>'
+
+  30) DocumentsController GET #edit can not edit document when document is not the draft state 
+     Failure/Error: expect(response).to redirect_to(:action => 'index')
+       Expected response to be a <redirect>, but was <200>
+     # ./spec/controllers/documents_controller_spec.rb:75:in `block (3 levels) in <top (required)>'
+
+  31) DocumentsController GET #destroy delete the document when it was found
+     Failure/Error: assgns[:document] == true
+     NameError:
+       undefined local variable or method `assgns' for #<RSpec::ExampleGroups::DocumentsController::GETDestroy:0x830dc90>
+     # ./spec/controllers/documents_controller_spec.rb:83:in `block (3 levels) in <top (required)>'
+
+  32) DocumentsController GET #destroy can not delete document when it can be found
+     Failure/Error: assgns[:document] == false
+     NameError:
+       undefined local variable or method `assgns' for #<RSpec::ExampleGroups::DocumentsController::GETDestroy:0x8304ed0>
+     # ./spec/controllers/documents_controller_spec.rb:89:in `block (3 levels) in <top (required)>'
+
+  33) OrganisationsController GET #new returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:8:in `block (3 levels) in <top (required)>'
+
+  34) OrganisationsController GET #create returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:16:in `block (3 levels) in <top (required)>'
+
+  35) OrganisationsController GET #invite can invite users when it is owner
+     Failure/Error: assigns[current_user_is_owner]== true
+     NameError:
+       undefined local variable or method `current_user_is_owner' for #<RSpec::ExampleGroups::OrganisationsController::GETInvite:0x8210dd8>
+     # ./spec/controllers/organisations_controller_spec.rb:22:in `block (3 levels) in <top (required)>'
+
+  36) OrganisationsController GET #inviteSubmission  invite Unregistered users 
+     Failure/Error: assigns(:email => selected_email).first== nil
+     NameError:
+       undefined local variable or method `selected_email' for #<RSpec::ExampleGroups::OrganisationsController::GETInviteSubmission:0x8207610>
+     # ./spec/controllers/organisations_controller_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  37) OrganisationsController GET #inviteSubmission  invite registered users 
+     Failure/Error: assigns(:email => selected_email).first!= nil
+     NameError:
+       undefined local variable or method `selected_email' for #<RSpec::ExampleGroups::OrganisationsController::GETInviteSubmission:0x81fc678>
+     # ./spec/controllers/organisations_controller_spec.rb:37:in `block (3 levels) in <top (required)>'
+
+  38) OrganisationsController GET #users returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:46:in `block (3 levels) in <top (required)>'
+
+  39) OrganisationsController GET #save_current_organisation returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:53:in `block (3 levels) in <top (required)>'
+
+  40) OrganisationsController GET #accept_organisation_invitation returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:60:in `block (3 levels) in <top (required)>'
+
+  41) OrganisationsController GET #decline_organisation_invitation returns http success
+     Failure/Error: get :decline_organisation_invitation
+     ActionController::UrlGenerationError:
+       No route matches {:action=>"decline_organisation_invitation", :controller=>"organisations"}
+     # ./spec/controllers/organisations_controller_spec.rb:66:in `block (3 levels) in <top (required)>'
+
+  42) OrganisationsController GET #remove_user returns http success
+     Failure/Error: expect(response).to have_http_status(:success)
+       expected the response to have a success status code (2xx) but it was 302
+     # ./spec/controllers/organisations_controller_spec.rb:74:in `block (3 levels) in <top (required)>'
+
+  43) OrganisationsController GET #organisation_params returns http success
+     Failure/Error: get :organisation_params
+     ActionController::UrlGenerationError:
+       No route matches {:action=>"organisation_params", :controller=>"organisations"}
+     # ./spec/controllers/organisations_controller_spec.rb:80:in `block (3 levels) in <top (required)>'
+
+  44) TopicsController GET #new assigns a new topic as @topic
+     Failure/Error: expect(assigns(:topic)).to be_a_new(Topic)
+       expected nil to be a new Topic(id: integer, name: string, description: string, status: integer, created_at: datetime, updated_at: datetime, organisation_id: integer, score: integer, last_audit_date: datetime)
+     # ./spec/controllers/topics_controller_spec.rb:58:in `block (3 levels) in <top (required)>'
+
+  45) AuditScopes GET /audit_scopes works! (now write some real specs)
+     Failure/Error: get audit_scopes_path
+     NameError:
+       undefined local variable or method `audit_scopes_path' for #<RSpec::ExampleGroups::AuditScopes::GETAuditScopes:0x904e888>
+     # ./spec/requests/audit_scopes_spec.rb:6:in `block (3 levels) in <top (required)>'
+
+  46) Audits GET /audits works! (now write some real specs)
+     Failure/Error: expect(response).to have_http_status(200)
+       expected the response to have status code 200 but it was 302
+     # ./spec/requests/audits_spec.rb:7:in `block (3 levels) in <top (required)>'
+
+  47) Topics GET /topics works! (now write some real specs)
+     Failure/Error: expect(response).to have_http_status(200)
+       expected the response to have status code 200 but it was 302
+     # ./spec/requests/topics_spec.rb:7:in `block (3 levels) in <top (required)>'
+
+  48) AuditsController routing routes to #index
+     Failure/Error: expect(:get => "/audit_scopes").to route_to("audit_scopes#index")
+       No route matches "/audit_scopes"
+     # ./spec/routing/audit_scopes_routing_spec.rb:7:in `block (3 levels) in <top (required)>'
+
+  49) AuditsController routing routes to #new
+     Failure/Error: expect(:get => "/audit_scopes/new").to route_to("audit_scopes#new")
+       No route matches "/audit_scopes/new"
+     # ./spec/routing/audit_scopes_routing_spec.rb:11:in `block (3 levels) in <top (required)>'
+
+  50) AuditsController routing routes to #show
+     Failure/Error: expect(:get => "/audit_scopes/1").to route_to("audit_scopes#show", :id => "1")
+       No route matches "/audit_scopes/1"
+     # ./spec/routing/audit_scopes_routing_spec.rb:15:in `block (3 levels) in <top (required)>'
+
+  51) AuditsController routing routes to #edit
+     Failure/Error: expect(:get => "/audit_scopes/1/edit").to route_to("audit_scopes#edit", :id => "1")
+       No route matches "/audit_scopes/1/edit"
+     # ./spec/routing/audit_scopes_routing_spec.rb:19:in `block (3 levels) in <top (required)>'
+
+  52) AuditsController routing routes to #create
+     Failure/Error: expect(:post => "/audit_scopes").to route_to("audit_scopes#create")
+       No route matches "/audit_scopes"
+     # ./spec/routing/audit_scopes_routing_spec.rb:23:in `block (3 levels) in <top (required)>'
+
+  53) AuditsController routing routes to #update
+     Failure/Error: expect(:put => "/audit_scopes/1").to route_to("audit_scopes#update", :id => "1")
+       No route matches "/audit_scopes/1"
+     # ./spec/routing/audit_scopes_routing_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  54) AuditsController routing routes to #destroy
+     Failure/Error: expect(:delete => "/audit_scopes/1").to route_to("audit_scopes#destroy", :id => "1")
+       No route matches "/audit_scopes/1"
+     # ./spec/routing/audit_scopes_routing_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  55) audit_scopes/edit renders the edit audit_scope form
+     Failure/Error: @audit_scope = assign(:audit_scope, AuditScope.create!(
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/views/audit_scopes/edit.html.erb_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+  56) audit_scopes/index renders a list of audit_scopes
+     Failure/Error: AuditScope.create!(
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/views/audit_scopes/index.html.erb_spec.rb:6:in `block (2 levels) in <top (required)>'
+
+  57) audit_scopes/new renders new audit_scope form
+     Failure/Error: assign(:audit_scope, AuditScope.new(
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/views/audit_scopes/new.html.erb_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+  58) audit_scopes/show renders attributes in <p>
+     Failure/Error: @audit_scope = assign(:audit_scope, AuditScope.create!(
+     NameError:
+       uninitialized constant AuditScope
+     # ./spec/views/audit_scopes/show.html.erb_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+  59) audits/edit renders the edit audit form
+     Failure/Error: render
+     ActionView::Template::Error:
+       undefined method `name' for nil:NilClass
+     # ./app/views/audits/_form.html.erb:4:in `_app_views_audits__form_html_erb__469321911_69392304'
+     # ./app/views/audits/edit.html.erb:2:in `_app_views_audits_edit_html_erb___640296156_69845904'
+     # ./spec/views/audits/edit.html.erb_spec.rb:12:in `block (2 levels) in <top (required)>'
+
+  60) audits/index renders a list of audits
+     Failure/Error: render
+     ActionView::Template::Error:
+       no implicit conversion of nil into String
+     # ./app/views/audits/index.html.erb:25:in `+'
+     # ./app/views/audits/index.html.erb:25:in `block in _app_views_audits_index_html_erb__450033828_68256084'
+     # ./app/views/audits/index.html.erb:14:in `_app_views_audits_index_html_erb__450033828_68256084'
+     # ./spec/views/audits/index.html.erb_spec.rb:18:in `block (2 levels) in <top (required)>'
+
+  61) audits/new renders new audit form
+     Failure/Error: render
+     ActionView::Template::Error:
+       undefined method `name' for nil:NilClass
+     # ./app/views/audits/_form.html.erb:4:in `_app_views_audits__form_html_erb__469321911_67994652'
+     # ./app/views/audits/new.html.erb:2:in `_app_views_audits_new_html_erb___407915737_68029800'
+     # ./spec/views/audits/new.html.erb_spec.rb:12:in `block (2 levels) in <top (required)>'
+
+  62) audits/show renders attributes in <p>
+     Failure/Error: render
+     ActionView::Template::Error:
+       undefined method `to_date' for nil:NilClass
+     # ./app/views/audits/show.html.erb:15:in `_app_views_audits_show_html_erb___282293884_67467744'
+     # ./spec/views/audits/show.html.erb_spec.rb:12:in `block (2 levels) in <top (required)>'
+
+  63) topics/edit renders the edit topic form
+     Failure/Error: assert_select "input#topic_description[name=?]", "topic[description]"
+     Minitest::Assertion:
+       Expected at least 1 element matching "input#topic_description[name="topic[description]"]", found 0..
+       Expected 0 to be >= 1.
+     # ./spec/views/topics/edit.html.erb_spec.rb:19:in `block (3 levels) in <top (required)>'
+     # ./spec/views/topics/edit.html.erb_spec.rb:15:in `block (2 levels) in <top (required)>'
+
+  64) topics/index renders a list of topics
+     Failure/Error: assert_select "tr>td", :text => 1.to_s, :count => 2
+     Minitest::Assertion:
+       Expected exactly 2 elements matching "tr>td", found 1..
+       Expected: 2
+         Actual: 1
+     # ./spec/views/topics/index.html.erb_spec.rb:23:in `block (2 levels) in <top (required)>'
+
+  65) topics/new renders new topic form
+     Failure/Error: assert_select "input#topic_description[name=?]", "topic[description]"
+     Minitest::Assertion:
+       Expected at least 1 element matching "input#topic_description[name="topic[description]"]", found 0..
+       Expected 0 to be >= 1.
+     # ./spec/views/topics/new.html.erb_spec.rb:19:in `block (3 levels) in <top (required)>'
+     # ./spec/views/topics/new.html.erb_spec.rb:15:in `block (2 levels) in <top (required)>'
+
+1 deprecation warning total
+
+Finished in 4.37 seconds (files took 47.5 seconds to load)
+247 examples, 65 failures, 45 pending
+
+Failed examples:
+
+rspec ./spec/controllers/application_controller_spec.rb:6 # ApplicationController#is_owner? is true when the type is the user type
+rspec ./spec/controllers/application_controller_spec.rb:13 # ApplicationController#is_quality? is true when the type is the user type
+rspec ./spec/controllers/application_controller_spec.rb:20 # ApplicationController#is_basic? is true when the type is the user type
+rspec ./spec/controllers/application_controller_spec.rb:27 # ApplicationController#set_current_organisation_id? set the current_organisation_id
+rspec ./spec/controllers/application_controller_spec.rb:34 # ApplicationController#get_current_organisation? return nil if current_organisation_id is nil
+rspec ./spec/controllers/application_controller_spec.rb:41 # ApplicationController#setup_header? should return false if the current organization is nil
+rspec ./spec/controllers/application_controller_spec.rb:47 # ApplicationController#setup_header? should success when data is right
+rspec ./spec/controllers/application_controller_spec.rb:54 # ApplicationController#check_current_organisation? should select a organization when the get_current_organisation is nil 
+rspec ./spec/controllers/application_controller_spec.rb:61 # ApplicationController#check_current_user_is_owner? should notice cannot manage document types when user is not owner
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:40 # AuditsController GET #index assigns all audit_scopes as @audit_scopes
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:48 # AuditsController GET #show assigns the requested audit_scope as @audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:63 # AuditsController GET #edit assigns the requested audit_scope as @audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:72 # AuditsController POST #create with valid params creates a new AuditScope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:109 # AuditsController PUT #update with valid params updates the requested audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:116 # AuditsController PUT #update with valid params assigns the requested audit_scope as @audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:122 # AuditsController PUT #update with valid params redirects to the audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:130 # AuditsController PUT #update with invalid params assigns the audit_scope as @audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:136 # AuditsController PUT #update with invalid params re-renders the 'edit' template
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:145 # AuditsController DELETE #destroy destroys the requested audit_scope
+rspec ./spec/controllers/audit_scopes_controller_spec.rb:152 # AuditsController DELETE #destroy redirects to the audit_scopes list
+rspec ./spec/controllers/audits_controller_spec.rb:56 # AuditsController GET #new assigns a new audit as @audit
+rspec ./spec/controllers/documents_controller_spec.rb:6 # DocumentsController GET #index set document filter when it is empty
+rspec ./spec/controllers/documents_controller_spec.rb:12 # DocumentsController GET #index set status filter when it is empty
+rspec ./spec/controllers/documents_controller_spec.rb:19 # DocumentsController GET #index renders the index template
+rspec ./spec/controllers/documents_controller_spec.rb:26 # DocumentsController GET #show renders the show template
+rspec ./spec/controllers/documents_controller_spec.rb:33 # DocumentsController GET #new can not create documents when the user is basic user
+rspec ./spec/controllers/documents_controller_spec.rb:53 # DocumentsController GET #create can not create documents when the document already exist
+rspec ./spec/controllers/documents_controller_spec.rb:59 # DocumentsController GET #create return to index when document was created
+rspec ./spec/controllers/documents_controller_spec.rb:67 # DocumentsController GET #edit can not edit document when you are not the editor 
+rspec ./spec/controllers/documents_controller_spec.rb:73 # DocumentsController GET #edit can not edit document when document is not the draft state 
+rspec ./spec/controllers/documents_controller_spec.rb:82 # DocumentsController GET #destroy delete the document when it was found
+rspec ./spec/controllers/documents_controller_spec.rb:88 # DocumentsController GET #destroy can not delete document when it can be found
+rspec ./spec/controllers/organisations_controller_spec.rb:6 # OrganisationsController GET #new returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:14 # OrganisationsController GET #create returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:21 # OrganisationsController GET #invite can invite users when it is owner
+rspec ./spec/controllers/organisations_controller_spec.rb:30 # OrganisationsController GET #inviteSubmission  invite Unregistered users 
+rspec ./spec/controllers/organisations_controller_spec.rb:36 # OrganisationsController GET #inviteSubmission  invite registered users 
+rspec ./spec/controllers/organisations_controller_spec.rb:44 # OrganisationsController GET #users returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:51 # OrganisationsController GET #save_current_organisation returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:58 # OrganisationsController GET #accept_organisation_invitation returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:65 # OrganisationsController GET #decline_organisation_invitation returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:72 # OrganisationsController GET #remove_user returns http success
+rspec ./spec/controllers/organisations_controller_spec.rb:79 # OrganisationsController GET #organisation_params returns http success
+rspec ./spec/controllers/topics_controller_spec.rb:56 # TopicsController GET #new assigns a new topic as @topic
+rspec ./spec/requests/audit_scopes_spec.rb:5 # AuditScopes GET /audit_scopes works! (now write some real specs)
+rspec ./spec/requests/audits_spec.rb:5 # Audits GET /audits works! (now write some real specs)
+rspec ./spec/requests/topics_spec.rb:5 # Topics GET /topics works! (now write some real specs)
+rspec ./spec/routing/audit_scopes_routing_spec.rb:6 # AuditsController routing routes to #index
+rspec ./spec/routing/audit_scopes_routing_spec.rb:10 # AuditsController routing routes to #new
+rspec ./spec/routing/audit_scopes_routing_spec.rb:14 # AuditsController routing routes to #show
+rspec ./spec/routing/audit_scopes_routing_spec.rb:18 # AuditsController routing routes to #edit
+rspec ./spec/routing/audit_scopes_routing_spec.rb:22 # AuditsController routing routes to #create
+rspec ./spec/routing/audit_scopes_routing_spec.rb:26 # AuditsController routing routes to #update
+rspec ./spec/routing/audit_scopes_routing_spec.rb:30 # AuditsController routing routes to #destroy
+rspec ./spec/views/audit_scopes/edit.html.erb_spec.rb:12 # audit_scopes/edit renders the edit audit_scope form
+rspec ./spec/views/audit_scopes/index.html.erb_spec.rb:19 # audit_scopes/index renders a list of audit_scopes
+rspec ./spec/views/audit_scopes/new.html.erb_spec.rb:12 # audit_scopes/new renders new audit_scope form
+rspec ./spec/views/audit_scopes/show.html.erb_spec.rb:12 # audit_scopes/show renders attributes in <p>
+rspec ./spec/views/audits/edit.html.erb_spec.rb:11 # audits/edit renders the edit audit form
+rspec ./spec/views/audits/index.html.erb_spec.rb:17 # audits/index renders a list of audits
+rspec ./spec/views/audits/new.html.erb_spec.rb:11 # audits/new renders new audit form
+rspec ./spec/views/audits/show.html.erb_spec.rb:11 # audits/show renders attributes in <p>
+rspec ./spec/views/topics/edit.html.erb_spec.rb:12 # topics/edit renders the edit topic form
+rspec ./spec/views/topics/index.html.erb_spec.rb:19 # topics/index renders a list of topics
+rspec ./spec/views/topics/new.html.erb_spec.rb:12 # topics/new renders new topic form
+

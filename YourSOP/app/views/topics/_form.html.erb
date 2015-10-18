@@ -1,0 +1,21 @@
+
+<%= bootstrap_form_for(@topic, layout: :horizontal, label_col: "col-sm-2") do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation" class="bg-danger">
+      <h2 class="text-danger"><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |message| %>
+        <li class="text-danger" ><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+  <%= f.hidden_field(:status, value: 1) %>
+    <%= f.form_group do %>
+    <%= f.submit "Submit", class: "btn btn-primary", data: {disable_with: "Saving..."} %>
+  <% end %>
+<% end %>

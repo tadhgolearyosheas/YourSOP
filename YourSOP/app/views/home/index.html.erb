@@ -1,0 +1,238 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">My Tasks</div>
+        <div class="panel-body">
+            <% if @my_actions.count() <= 0 and @documents_for_review.count() <= 0 and @documents_for_approval.count() <= 0 and @documents_for_trainee.count() <= 0 and @audits_for_review.count() <= 0 and @audits_for_approval.count() <= 0 %>
+              <p>No task to do at the moment. :)</p>
+            <% else %>
+              <ul>
+               <% if @documents_for_review.count() > 0 %>
+                 <li>You have <%= link_to @documents_for_review.count(), '#doc_review_modal', 'data-toggle' => 'modal' %> document(s) to review.</li>
+                 <div class="modal fade" id="doc_review_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Document(s) Need Review</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <div class="list-group">
+                                    <% @documents_for_review.each do |r| %>
+                                      <%= link_to r.title, document_path(r.id), class: "list-group-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <% end %>
+                 
+               <% if @documents_for_approval.count() > 0 %>
+                 <li>You have <%= link_to @documents_for_approval.count(), '#doc_approval_modal', 'data-toggle' => 'modal' %> document(s) to approve.</li>
+                 <div class="modal fade" id="doc_approval_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Document(s) Need Approval</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <div class="list-group">
+                                    <% @documents_for_approval.each do |r| %>
+                                      <%= link_to r.title, document_path(r.id), class: "list-group-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <% end %>
+
+                <% if @documents_for_trainee.count() > 0 %>
+
+                 <li>You have <%= link_to @documents_for_trainee.count(), '#doc_trainee_modal', 'data-toggle' => 'modal' %> document(s) to sign off.</li>
+                 <div class="modal fade" id="doc_trainee_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Document(s) Need To Sign Off</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <div class="list-group">
+                                    <% @documents_for_trainee.each do |r| %>
+                                      <%= link_to r.title, document_path(r.id), class: "list-group-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <% end %>
+
+
+               
+               <% if @audits_for_review.count() > 0 %>
+                 <li>You have <%= link_to @audits_for_review.count(), '#audit_review_modal', 'data-toggle' => 'modal' %> audit(s) to review.</li>
+                 <div class="modal fade" id="audit_review_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Audit(s) Need Review</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <div class="list-group">
+                                    <% @audits_for_review.each do |r| %>
+                                      <%= link_to r.topic.name, audit_path(r.id), class: "list-group-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <% end %>
+                 
+               <% if @audits_for_approval.count() > 0 %>
+                 <li>You have <%= link_to @audits_for_approval.count(), '#audit_approval_modal', 'data-toggle' => 'modal' %> audit(s) to approve.</li>
+                 <div class="modal fade" id="audit_approval_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Audit(s) Need Approve</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <div class="list-group">
+                                    <% @audits_for_approval.each do |r| %>
+                                      <%= link_to r.topic.name, audit_path(r.id), class: "list-group-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <% end %>
+              </ul>
+            <% end %>
+        </div>
+      </div>
+    </div>
+     <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Audit Actions Require Your Action</div>
+          <div class="panel-body">
+              <% if @my_actions.count() <= 0 %>
+                <ul>
+                  <li>No Audit need you to take action.</li>
+                </ul>
+              <% else %>
+                <div class="list-group">
+                <% @my_actions.each do |a| %>
+                    <%= link_to a.audits_practice.audit.topic.name, '#action_modal_' + a.id.to_s , 'data-toggle' => 'modal', class: "list-group-item" %>
+                    <div class="modal fade" id="action_modal_<%= a.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel"><%= a.audits_practice.audit.topic.name %></h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="well">
+                              <dl class="dl-horizontal">
+                                <dt><strong>Audit Start Date:</strong></dt>
+                                <dd><%= a.audits_practice.audit.start_date.to_date %></dd>
+                              </dl>
+    
+                              <dl class="dl-horizontal">
+                                <dt><strong>Audit End Date:</strong></dt>
+                                <dd><%= a.audits_practice.audit.end_date == nil ? "" : a.audits_practice.audit.end_date.to_date %></dd>
+                              </dl>
+    
+                              <dl class="dl-horizontal">
+                                <dt><strong>Audit Result:</strong></dt>
+                                <dd><%= audit_result_to_string a.audits_practice.audit.result %></dd>
+                              </dl>
+    
+                              <dl class="dl-horizontal">
+                                <dt><strong>Your Action:</strong></dt>
+                                <dd><%= a.action %></dd>
+                              </dl>
+    
+                          </div>
+                            <%= bootstrap_form_tag url: 'home/save_audit_action', method: :put do |f| %>
+                              <%= f.hidden_field :id, value: a.id %>
+                              <%= f.text_area :comment, :rows => 4, :cols => 30, :value => a.comment %>
+                              <%= f.check_box :status, label: 'I have finished this action.', checked: true %>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-success" value="Submit" />
+                              </div>
+                          <% end %>
+    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+                  </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">My Profile</div>
+        <div class="panel-body">
+          <ul>
+            <li>Organisation: <%= @current_organisation.name %></li>
+            <li>Email: <%= @current_user.email %></li>
+            <li>Role: <%= user_type_to_string OrganisationUser.where(organisation: @current_organisation, user: @current_user)[0].user_type %></li>
+            <li>Last Sign In: <%= current_user.last_sign_in_at %></li>
+            <li>Current Sign in IP: <%= request.remote_ip %> </li>
+            <li>Last Sign In IP: <%=current_user.last_sign_in_ip%></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<div class="bs-docs-section">   
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">My Notifications</div>
+         <ul class="list-group">
+          <%= render partial: 'notifications', :locals => {:collection => @home} %>
+        </ul>
+         
+        <%= will_paginate %>
+      </div>
+    </div>
+   
+</div>
+
+

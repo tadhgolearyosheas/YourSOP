@@ -1,0 +1,105 @@
+<div class="container-fluid">
+  <dl class="dl-horizontal">
+    <dt><strong>Topic:</strong></dt>
+    <dd><%= @topic.name %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Topic Description:</strong></dt>
+    <dd><%= @topic.description %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Documents:</strong></dt>
+    <dd>
+      <ul>
+        <% @risk.topic.documents.where("major_version != '0'").each do |d| %>
+          <li><%= link_to d.title, document_path(d.id), target: "_blank" %></li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Description:</strong></dt>
+    <dd><%= raw @risk.desc %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Score:</strong></dt>
+    <dd><%= @risk.score %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Risk Details:</strong></dt>
+    <dd>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Impact</th>
+            <th>Likelihood</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @risk.risks_details.each do |d| %>
+            <tr>
+              <td><%= d.title %></td>
+              <td><%= risk_impact_to_string d.impact %></td>
+              <td><%= risk_likelihood_to_string d.likelihood %></td>
+              <td><%= d.score %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</div>
+  
+<%= bootstrap_nested_form_for(audit, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-11") do |form| %>
+    <%= form.alert_message "Please fix the errors below." %>
+    <%= form.hidden_field :topic_id, value: @topic_id %>
+    <%= form.hidden_field :end_date, value: :end_date %>
+    <%= form.hidden_field :result, value: :result %>
+    <%= form.hidden_field :status, value: :status %>
+
+    
+
+    <%#= form.date_field :start_date, value: form.object.start_date.to_date, control_col: "col-sm-3"  %>
+    <div class="form-group"> 
+        <label class="control-label col-sm-2" for="">Practices:</label>
+            <div class="col-sm-10">
+                <div class="form-inline">
+                    <%= form.fields_for :audits_practices do |f| %>
+                        <%= f.text_area :observation, label: 'Description', :rows => 4, :cols => 60 %>
+
+                        <%= f.collection_check_boxes :document_ids, @risk.topic.documents.where("major_version != '0'"), :id, :title, label: "Source" %>
+                        <%= f.check_box :_destroy %>
+                    <% end %>
+                    <%= form.link_to_add "Add", :audits_practices %>
+
+                 </div>
+        </div>
+       
+    </div>
+
+    <dl class="dl-horizontal">
+      <dt><strong>Select Users for<br/> Review </strong></dt>
+       <dd> 
+          <%= render partial: 'documents/user_select', locals: {params_hash: 'reviews', selected_users: @existing_reviewer_ids, users: @current_organisation.users } %>
+      </dd>
+    </dl>
+                             
+    <dl class="dl-horizontal">
+      <dt><strong>Select Users for<br/> Approval </strong></dt>
+       <dd>
+          <%= render partial: 'documents/user_select', locals: {params_hash: 'approvals', selected_users: @existing_approver_ids, users: @current_organisation.users } %>
+      </dd>
+    </dl>
+    
+    <%= form.form_group do %>
+     <%= form.submit "Send For Review", class: "btn btn-primary", data: {disable_with: "Saving..."} %>
+     <%= form.submit "Save as Draft", class: "btn btn-default", data: {disable_with: "Saving..."} %>
+    <% end %>
+<% end %>

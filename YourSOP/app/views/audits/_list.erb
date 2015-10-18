@@ -1,0 +1,64 @@
+<div id="audits_list">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>
+      Topic
+    </th>
+    <th>
+      Start Date
+    </th>
+    <th>
+      End Date
+    </th>
+    <th>
+      Created By
+    </th>
+    <th>
+      Status 
+    </th>
+    <th>
+      Result
+    </th>
+    <th>
+      Actions
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% audits.each do |a| %>
+      <tr>
+        <td>
+          <%= link_to a.topic.name, audit_path(a.id) %>
+        </td>
+        
+        <td>
+          <%= a.start_date %>
+        </td>
+        <td>
+          <%= a.end_date %>
+        </td>
+        <td>
+          <%= a.user.email %>
+        </td>
+        <td>
+          <%= topic_status_to_string a.status %>
+        </td>
+        <td><%= audit_result_to_string a.result %></td>
+        <td>
+            <%= link_to "Fill in Result", result_path(:id => a.id), :class => "btn-link" if a.status == 4 and is_current_user_quality_or_owner %>
+            <%= link_to "Start Audit", start_audit_path(:id => a.id), method: :post, remote: true, data: { confirm: 'Are you sure to start this aduit? this will make the audit start today.' }, :class => "btn-link" if a.status == 3 and is_current_user_quality_or_owner %>
+            <%= link_to "Edit", edit_audit_path(:id => a.id), :class => "btn-link" if a.status == 0 and a.user_id == @current_user.id %>
+            <%= link_to "Review", audit_path(:id => a.id), :class => "btn-link" if a.status == 1 and a.audit_reviews.where(status: 0, user_id: @current_user.id).count() > 0 %>
+            <%= link_to "Approve", audit_path(:id => a.id), :class => "btn-link" if a.status == 2 and a.audit_approvals.where(status: 0, user_id: @current_user.id).count() > 0 %>
+            <% if a.status == 5 %>
+            <%= link_to "View Audit Report", audit_path(a.id), :class => "btn-link" %>
+            <%#= link_to "Restart Audit", restart_audit_path(:id => a.id), :class => "btn-link" if a.user_id == @current_user.id %>
+            <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+

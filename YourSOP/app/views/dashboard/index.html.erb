@@ -1,0 +1,10 @@
+
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<%# if is_basic(@user_type) %>
+  <%#= render partial: 'basic', locals: {} %>
+<%# elsif is_quality(@user_type) %>
+  <%= render partial: 'quality', locals: {} %>
+<%# elsif is_owner(@user_type) %>
+  <%#= render partial: 'owner', locals: {} %>
+<%# end %>

@@ -1,0 +1,80 @@
+<div class="page-header">
+  <h1>Risk Assessment Form</h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @topic.name %></div>
+  <div class="well">
+    <p><%= @topic.description %><p/>
+  </div>
+
+
+
+  <dl class="dl-horizontal">
+    <dt><strong>Score:</strong></dt>
+    <dd><%= @risk.score %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Description:</strong></dt>
+    <dd><%= raw(@risk.desc) %></dd>
+  </dl>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Documents:</strong></dt>
+    <dd>
+      <ul>
+        <% @risk.topic.documents.each do |d| %>
+          <% if d.minor_version.to_i != 0 %>
+            <li><%= link_to d.title + " (" + get_effective_document_version(d) + ")", compare_path(d.id, d.document_revisions.find_by_major_version_and_minor_version(d.major_version, 0).id, 0), target: "_blank" %></li>
+          <% else %>
+            <li><%= link_to d.title + " (" + get_document_version(d) + ")", document_path(d.id), target: "_blank" %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt><strong>Assessment History:</strong></dt>
+    <dd>
+      <ul>
+        <% @history.each do |h| %>
+          <li><%= link_to h.created_at.to_s + ", Score: " + h.score.to_s, risk_path(@topic.id, :risk_id => h.id), target: "_blank" %></li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Risks</div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Impact</th>
+        <th>Likelihood</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @risk.risks_details.each do |d| %>
+        <tr>
+          <td><%= d.title %></td>
+          <td><%= risk_impact_to_string d.impact %></td>
+          <td><%= risk_likelihood_to_string d.likelihood %></td>
+          <td><%= d.score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+  <br />
+  <div class="form-actions">
+    <%= link_to 'Back', risks_path, :class => 'btn btn-primary'  %>
+  </div>
+
+ 
+

@@ -1,0 +1,297 @@
+<div id="bs-component">
+  <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+    <li class="active"><a href="#audit" data-toggle="tab">Audit</a></li>
+    <li><a href="#topic" data-toggle="tab">Topic Information</a></li>
+    <li><a href="#risk" data-toggle="tab">Risk Assessment</a></li>
+    <li><a href="#assigned_users" data-toggle="tab">Assigned Users</a></li>
+        	
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="audit">
+      <br />
+          <dl class="dl-horizontal">
+            <dt><strong>Audit Start Date:</strong></dt>
+            <dd><%= @audit.start_date.to_date if @audit.start_date != nil %></dd>
+          </dl>
+      
+          <dl class="dl-horizontal">
+            <dt><strong>Audit End Date:</strong></dt>
+            <dd><%= @audit.end_date == nil ? "" : @audit.end_date.to_date %></dd>
+          </dl>
+          
+          <dl class="dl-horizontal">
+            <dt><strong>Created By:</strong></dt>
+            <dd><%= @audit.user.email %></dd>
+          </dl>
+      
+          <dl class="dl-horizontal">
+            <dt><strong>Audit Status:</strong></dt>
+            <dd><%= topic_status_to_string @audit.status %></dd>
+          </dl>
+      
+          <dl class="dl-horizontal">
+            <dt><strong>Audit Result:</strong></dt>
+            <dd><%= audit_result_to_string @audit.result %></dd>
+          </dl>
+          
+            <dl class="dl-horizontal">
+            <dt><strong>Practices:</strong></dt>
+            <dd>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Source</th>
+                    <% if @audit.status > 2 %>
+                      <th>Evidence</th>
+                      <th>Actions</th>
+                      <th>Result</th>
+                    <% end %>
+                  </tr>
+                </thead>
+                <tbody>
+                   <% @audit.audits_practices.each do |p| %>
+                    <tr>
+                      <td><%= p.observation %></td>
+                      <td>
+                        <ul>
+                          <% p.documents.where(status: 3).each_with_index do |d, i| %>
+                              <% if d.minor_version.to_i != 0 %>
+                                <li><%= link_to d.title + " (" + p.audits_practices_documents[i].major_version.to_s + ".0" + ")", compare_path(d.id, d.document_revisions.find_by_major_version_and_minor_version(p.audits_practices_documents[i].major_version, 0).id, 0), target: "_blank" %></li>
+                              <% else %>
+                                <li><%= link_to d.title + " (" + get_document_version(d) + ")", document_path(d.id), target: "_blank" %></li>
+                              <% end %>
+                          <% end %>
+                        </ul>
+                      </td>
+                      <% if @audit.status > 2 %>
+                          <td>
+                            <%= p.evidence %>
+                            <br />
+                            <% if !p.attachment.to_s.include? 'missing.png' %>
+                              <%= link_to "Download", p.attachment.url(:original, false), target: "_blank", class: "btn btn-primary btn-xs" %>
+                            <% end %>
+                          </td>
+                          <td>
+                            <table class="table table-bordered">
+                              <tr>
+                                <th>Action</th>
+                                <th>User</th>
+                                <th>Feedback</th>
+                              </tr>
+                            <% p.audits_practices_actions.each do |a| %>
+                              <tr>
+                                <td><%= a.action %></td>
+                                <td><%= a.user.email%></td>
+                                <td><%= a.comment %></td>
+                              </tr>
+                            <% end %>
+          
+                            </table>
+                          </td>
+                          <td><%= audit_result_to_string p.result %></td>
+                       <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </dd>
+          </dl>            
+    </div>
+    <div class="tab-pane fade" id="topic">
+      <br />
+      <dl class="dl-horizontal">
+        <dt><strong>Topic:</strong></dt>
+        <dd><%= @topic.name %></dd>
+      </dl>
+  
+      <dl class="dl-horizontal">
+        <dt><strong>Topic Description:</strong></dt>
+        <dd><%= @topic.description %></dd>
+      </dl>
+      <dl class="dl-horizontal">
+        <dt><strong>Documents:</strong></dt>
+        <dd>
+          <ul>
+            <% @risk.topic.documents.where(status: 3).each do |d| %>
+              <% if d.minor_version.to_i != 0 %>
+                <li><%= link_to d.title + " (" + get_effective_document_version(d) + ")", compare_path(d.id, d.document_revisions.find_by_major_version_and_minor_version(d.major_version, 0).id, 0), target: "_blank" %></li>
+              <% else %>
+                <li><%= link_to d.title + " (" + get_document_version(d) + ")", document_path(d.id), target: "_blank" %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+    <div class="tab-pane fade" id="risk">
+      <br />
+
+      <dl class="dl-horizontal">
+        <dt><strong>Risk Score:</strong></dt>
+        <dd><%= @risk.score %></dd>
+      </dl>
+
+      <dl class="dl-horizontal">
+        <dt><strong>Rational for Risk Assessment:</strong></dt>
+        <dd><%= raw @risk.desc %></dd>
+      </dl>
+  
+      <dl class="dl-horizontal">
+        <dt><strong>Risk Details:</strong></dt>
+        <dd>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Impact</th>
+                <th>Likelihood</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+               <% @risk.risks_details.each do |d| %>
+                <tr>
+                  <td><%= d.title %></td>
+                  <td><%= risk_impact_to_string d.impact %></td>
+                  <td><%= risk_likelihood_to_string d.likelihood %></td>
+                  <td><%= d.score %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </dd>
+      </dl>
+    </div>
+    <div class="tab-pane fade" id="assigned_users">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Reviews:</h3>
+          <% if @review_users.empty? %>
+              No users selected to review this audit.
+          <% else %>
+               <% @review_users.each do |r| %>
+                  <ul>
+                    <li><%= r[:user].email %> -  <%= review_status_to_string r[:review].status %></li>
+                  </ul>
+                <% end %>
+          <% end %>
+        </div>
+  
+        <div class="col-sm-6">
+          <h3>Approvals:</h3>
+           <% if @approval_users.empty? %>
+              No users selected to approve this audit.
+          <% else %>
+            <% @approval_users.each do |a| %>
+               <ul>
+                <li><%= a[:user].email %> - <%= approval_status_to_string a[:approval].status %></li>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+  
+   <%= commontator_thread(@audit) %>
+ 
+  
+  <% if @is_reviewer || @is_approver %>
+    <hr />
+
+    <%= form_tag 'save_audit_response', method: :put do %>
+        <%= hidden_field_tag :id, @audit.id %>
+        <%= hidden_field_tag :relation_id, @relation_id %>
+        <!-- Button trigger modal -->
+        <% if @is_reviewer %>
+            <%= @audit.user.email %> has assigned you to review this audit.
+            <% if @review.status == 0 %>
+                You have not yet reviewed this audit.
+            <% end %>
+            <br /><br />
+            <% if @review.status != 1 %>
+              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+                Mark as reviewed
+              </button>
+            <% else %>
+                You have already marked this audit as reviewed.
+            <% end %>
+        <% elsif @is_approver %>
+            <%= @audit.user.email %> has assigned you to approve this audit.
+            <% if @approval.status == 0 %>
+                You have not yet approved or declined this audit.
+            <% end %>
+            <br /><br />
+            <% if @approval.status != 1 %>
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+                  Approve
+                </button>
+            <% else %>
+                You have already approved this audit.
+            <% end %>
+            <% if @approval.status != 2 %>
+                <input type="submit" class="btn btn-danger btn-lg" value="Decline Aduit" name="decline" />
+            <% else %>
+                You have already declined this audit.
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+              <% if @is_reviewer %>
+                  Mark as reviewed
+              <% else %>
+                  Approve
+              <% end %>
+            </h4>
+          </div>
+
+          <div class="modal-body">
+            <% if @is_reviewer %>
+                I have reviewed this document.
+            <% else %>
+                I approve this document.
+            <% end %>
+            <br />
+            <%= bootstrap_form_tag url: 'save_audit_response', method: :put do |f| %>
+                <%= f.hidden_field :id, value: @audit.id %>
+                <%= f.hidden_field :relation_id, value: @relation_id %>
+                <%= f.text_field(:email, value: @current_user.email) %>
+                <%= f.password_field(:password) %>
+                <br />
+                <br />
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if @is_reviewer %>
+                      <input type="submit" class="btn btn-success" value="Mark audit as reviewed" name="review" />
+                  <% else %>
+                      <input type="submit" class="btn btn-success" value="Approve audit" name="approve" />
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% end %>
+</div>
+  
+
+
+  <br />
+	<div class="form-actions">
+		<%= link_to 'Back', audits_path, class: "btn btn-primary" %>  	
+  </div>
+</div>
+
+

@@ -1,0 +1,26 @@
+<h1>Risk Management</h1>
+
+<ul class="nav nav-tabs" id="document_filter_buttons" >
+  <li id="listRisks" role="presentation" class="active" ><%= link_to "Topics", list_risks_path, method: :post, remote: true %></li>
+</ul>
+
+
+</div>
+</div>
+
+<div class="container">
+
+<!-- tab content -->
+<div class="col-md-13">
+	<div class="tab-content" id="tab_content_list">
+		<div class="tab-pane active text-style" id="tab0">
+  			<%= render partial: 'listRisks', locals: {topics: @topics} %>    
+		</div>
+</div>
+</div>
+</div>
+
+
+  
+
+

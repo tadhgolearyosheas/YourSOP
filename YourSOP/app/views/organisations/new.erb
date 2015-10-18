@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @organisation do |form| %>
+    <%= form.hidden_field :user_id, value: @current_user_id %>
+    <%= form.text_field :name %>
+    <%= form.text_field :gms_code %>
+    <div class="actions">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+<% end %>

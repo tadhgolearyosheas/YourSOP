@@ -1,0 +1,84 @@
+
+<h1>Audit Management</h1>
+
+<ul class="nav nav-tabs" id="document_filter_buttons" >
+  <li id="listRisks" role="presentation" class="active" ><%= link_to "Audits", list_audits_path, method: :post, remote: true %></li>
+</ul>
+
+
+</div>
+</div>
+
+<div class="container">
+
+<%= form_for :audits, method: :put, remote: true do |f| %>
+
+<div class="col-md-2">
+    <div class="btn-group-vertical" id="status_filter_buttons">
+          <br />
+          <% 
+            active = ""
+            if @status == 0
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "Draft" + @draft_count, class: "btn btn-primary " + active, align: "right", name: "status", id: "0" %>
+
+          <% 
+            active = ""
+            if @status == 1
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "For review" + @review_count, class: "btn btn-primary " + active, name: "status", id: "1" %>
+
+          <% 
+            active = ""
+            if @status == 2
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "For approval" + @approval_count, class: "btn btn-primary " + active, name: "status", id: "2" %>
+
+          <% 
+            active = ""
+            if @status== 3
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "Approved" + @approved_count, class: "btn btn-primary " + active, name: "status", id: "3" %>                  
+          <% 
+            active = ""
+            if @status== 4
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "Auditing" + @auditing_count, class: "btn btn-primary " + active, name: "status", id: "4" %>
+
+          <% 
+            active = ""
+            if @status == 5
+              active = "active btn-warning"
+            end 
+          %>
+          <%= f.submit "Finished" + @finished_count, class: "btn btn-primary " + active, name: "status", id: "5" %> 
+    </ul>
+  </div>
+</div>
+
+<% end %>
+
+<!-- tab content -->
+<div class="col-md-10">
+  <div class="tab-content" id="tab_content_list">
+    <div class="tab-pane active text-style" id="tab0">
+        <%= render partial: 'list', locals: {audits: @audits} %>    
+    </div>
+</div>
+</div>
+</div>
+
+
+  
+
+
