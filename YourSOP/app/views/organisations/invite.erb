@@ -1,21 +1,49 @@
 
-<%= bootstrap_form_for :organisation_user,  layout: :horizontal, label_col: "col-sm-1", control_col: "col-sm-6" do |form| %>
+<div class="row">
+	<div class="col-sm-8">
+		<h3>Invite New Users</h3>
+		<%= bootstrap_form_for :organisation_user,  layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |form| %>
 
-  <%= form.text_field :email %>
+		  <div class="form-group">
+			  <label class="control-label col-sm-2"></label>
+			  <div class="col-sm-8">
+			  	<input class="form-control" type="text" name="invite" id="invite">
+			  </div>
+			  <div class="col-sm-2">
+			  	<button type="button" id="btn_add" class="btn btn-link">Add</button>
+			  </div>
+		  	
+		  </div>
+		  
+		  <%= form.text_area :email, :rows => 4, :cols => 120%>
 
 
-  <%# <%= form.autocomplete_field :user_email, autocomplete_user_email_organisations_path,
-  <%#   :size => 30 %>
+		  <%# <%= form.autocomplete_field :user_email, autocomplete_user_email_organisations_path,
+		  <%#   :size => 30 %>
 
-  <%# <%= form.select(:invitedID, @users, {:prompt => "select user to invite"}, { :multiple => true, :size => 20 } ) %>
+		  <%# <%= form.select(:invitedID, @users, {:prompt => "select user to invite"}, { :multiple => true, :size => 20 } ) %>
 
-  <%= form.select(:typesSelection, @typesOptions, label: "Select  Role :") %>
+		  <%= form.select(:typesSelection, @typesOptions, label: "Role") %>
 
-
-	<%= form.form_group do %>
-  		<%= form.submit "Invite", class: "btn btn-primary" %>
-  	<% end %>
+		  <%= form.text_area :message, :rows => 10, :cols => 120 %>
 
 
+			<%= form.form_group do %>
+		  		<%= form.submit "Invite", class: "btn btn-primary" %>
+		  	<% end %>
+		<% end %>
+	</div>
 
-<% end %>
+	<div class="col-sm-4">
+		<h3>User Invite Process</h3>
+		<p>
+			Hi there. We'll be using SOP to manage and track our ongoing compliance. Please click the below link and register using this email address. 
+		</p>
+		<p>
+			Hi there. We'll be using SOP to manage and track our ongoing compliance. Please click the below link and register using this email address. 
+		</p>
+	</div>
+
+</div>
+
+

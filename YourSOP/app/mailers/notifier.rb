@@ -1,10 +1,12 @@
 class Notifier < ActionMailer::Base
-  default from: 'Document Manager'
+  default from: 'YourSOP'
 
-  def org_invite(email,org,inviter)
-    @org = org
+  def org_invite(email, pharmacy, inviter, msg)
     @inviter = inviter
-    mail(to: email, subject: 'You have been invited to an organisation')
+    @pharmacy = pharmacy
+    @msg = msg
+    @email = email
+    mail(to: email, subject: 'You have been invited to ' + @pharmacy)
   end
 
   def do_action(email,doc_name,creator,action)

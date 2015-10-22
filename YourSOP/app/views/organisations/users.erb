@@ -1,55 +1,77 @@
-<h1>Users</h1>
+<div class="row">
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>
-      Email
-    </th>
-    <th>
-      User Type
-    </th>
-    <th style="width: 10%;">
-      <!-- Option -->
-    </th>
-    <th style="width: 10%;">
-      <!-- Option -->
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @organisation_users.each do |u| %>
-      <tr>
-        <td>
-          <%= u[:user].email %>
-        </td>
-        <td>
-          <%= user_type_to_string u[:organisation_user].user_type %>
-          <% if !u[:organisation_user].accepted %>
-            (pending)
-          <% end %>
-        </td>
-        <%# owners can remove any other users AND invitations they created %>
-        <% if (is_owner(@organisation_user_type) && is_owner(u[:organisation_user].user_type) == false) || (current_user.id == u[:organisation_user].inviter_id && u[:organisation_user].accepted == false) %>
-            <td>
-              <%= link_to "Edit", {:controller => "organisations", :action => "edit_user", :user_id => u[:user].id} %>
-             </td>
-            <td>
-              <% if u[:user].last_seen_at == nil || u[:user].last_seen_at < 30.minute.ago %>
-              <%= link_to "Remove", remove_user_organisations_path + "?user_id=#{u[:user].id}", method: :delete, data: { confirm: 'Are you sure you want to remove this user?', class: 'delete-link' } %>
-             
-                  
-              <% else %>
-              User is currently online
-              <% end %>
-            </td>
-        <% else %>
-            <td colspan="2"></td>
-        <% end %>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<h3>Users </h3>
+   <% @organisation_users.each do |u| %>
+
+      <!-- Testimonial -->
+      <div class="testimonial col-md-4 col-sm-6">
+        <!-- Author Photo -->
+        <div class="author-photo">
+          <%= image_tag 'user1.jpg'%>
+        </div>
+        <div class="testimonial-bubble">
+          <blockquote>
+            <!-- Quote -->
+            <p class="quote">
+                 <% if (is_owner(@organisation_user_type) && is_owner(u[:organisation_user].user_type) == false) || (current_user.id == u[:organisation_user].inviter_id && u[:organisation_user].accepted == false) %>
+
+                    <%= link_to "Edit", {:controller => "organisations", :action => "edit_user", :user_id => u[:user].id} %>
+
+                    <% if u[:user].last_seen_at == nil || u[:user].last_seen_at < 30.minute.ago %>
+                    <%= link_to "Remove", remove_user_organisations_path + "?user_id=#{u[:user].id}", method: :delete, data: { confirm: 'Are you sure you want to remove this user?', class: 'delete-link' } %>
+                   
+                        
+                    <% else %>
+                    User is currently online
+                    <% end %>
+              <% end %>       
+            </p>
+                <!-- Author Info -->
+                <cite class="author-info">
+                  <%= u[:user].name %><br >
+                   <%= user_type_to_string u[:organisation_user].user_type %>
+                  <% if !u[:organisation_user].accepted %>
+                    (pending)
+                  <% end %>  
+                   <br /> <a href="mailto:<%= u[:user].email%>"><%= u[:user].email %></a>
+                </cite>
+              </blockquote>
+              <div class="sprite arrow-speech-bubble"></div>
+            </div>
+        </div>
+        <!-- End Testimonial -->
+   <% end %>
+
+   <% @pending_users.each do |u| %>
+      <!-- Testimonial -->
+      <div class="testimonial col-md-4 col-sm-6">
+        <!-- Author Photo -->
+        <div class="author-photo">
+          <%= image_tag 'user1.jpg'%>
+        </div>
+        <div class="testimonial-bubble">
+          <blockquote>
+            <!-- Quote -->
+            <p class="quote">
+                 Invitation sent at <%= u.created_at%>
+                 <br />
+                 <a href="#">Resend Invitation</a>
+                 <a href="#">Delete</a>
+            </p>
+                <!-- Author Info -->
+                <cite class="author-info">
+                   <%= user_type_to_string u.user_type %>
+                   <br /> <a href="mailto:<%= u.email%>"><%= u.email %></a>
+                </cite>
+              </blockquote>
+              <div class="sprite arrow-speech-bubble"></div>
+            </div>
+        </div>
+        <!-- End Testimonial -->
+   <% end %>
+
+</div>
+
 
 <nav class="navbar navbar-inverse">
     <div>

@@ -47,7 +47,7 @@ class OrganisationsController < ApplicationController
 
   def inviteSubmission
 
-    selected_email = params[:organisation_user][:email]
+    params[:organisation_user][:email].split(";").each do |selected_email|
 
     if User.where(email: selected_email).first.nil?
       # Users not registered yet
@@ -58,9 +58,8 @@ class OrganisationsController < ApplicationController
       pending_user.organisation_id = get_current_organisation.id
       pending_user.save
 
-      Notifier.org_invite(selected_email,Organisation.find(pending_user.organisation_id).name,User.find(pending_user.inviter_id).email).deliver_now
+      Notifier.org_invite(selected_email, Organisation.find(pending_user.organisation_id).name, User.find(pending_user.inviter_id).email, params[:organisation_user][:message]).deliver_now
 
-      redirect_to :organisations, notice: "Unregistered user has been invited."
     else
       # Users that have registered
       if selected_email != ''
@@ -72,10 +71,13 @@ class OrganisationsController < ApplicationController
         invited_user.inviter_id = current_user.id
         invited_user.save
 
-        Notifier.org_invite(selected_email,Organisation.find(invited_user.organisation_id).name,User.find(invited_user.inviter_id).email).deliver_now
+        Notifier.org_invite(selected_email, Organisation.find(invited_user.organisation_id).name, User.find(invited_user.inviter_id).email, params[:organisation_user][:message]).deliver_now
       end
-      redirect_to :organisations, notice: "Registered user has been invited."
+      
     end
+
+    end
+    redirect_to :organisations, notice: "Unregistered user has been invited."
   end
 
   def users
@@ -89,6 +91,13 @@ class OrganisationsController < ApplicationController
         @organisation_users << {user: u, organisation_user: ou, organisation: ou.organisation}
       end
     end
+
+    @pending_users = []
+    pending_users = PendingUser.all
+    pending_users.each do |u|
+      @pending_users << u
+    end
+
   end
 
   def save_current_organisation

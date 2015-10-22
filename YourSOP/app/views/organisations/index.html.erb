@@ -1,9 +1,5 @@
 
 
-<form action="organisations/new">
-  <button type="submit" class="btn btn-success">Create a new pharmacy</button>
-</form>
-
 <% if !@organisation_invitations.empty? %>
     <h3>You have been invited to join</h3>
     <table class="table table-striped">
@@ -63,52 +59,30 @@
 <% else %>
     <h2>You are members of following pharmacies.</h2>
 
+    <% @organisations.each do |org| %>
 
-    <li>
-      <div class="profile_page">
-        <div class="side_spacer"></div>
-        <div class="view">
-
-          <div class="user_icon">
-            <h1>{{user.user.name.substr(0, 1)}}</h1>
-          </div>
-
-          <div class="text-center">
-            <h1>{{user.user.name}}</h1>
-            <h5 style="color: #A9A9A9">{{user.user.email}}</h5>
-            <h5 style="color: #A9A9A9">{{user.user.where_born}}</h5>
-          </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service-wrapper">
+          <%= image_tag 'service-icon/diamond.png' %>
+           <% if org == @current_organisation %>
+                <h3><%= org.name %></h3>
+                <%= link_to 'View users', users_organisations_path %>
+            <% else %>
+                <h3><%= org.name %></h3>
+                <%= link_to 'Make active', "organisations/save_current_organisation?organisation_id=" + org.id.to_s, method: :post %>
+            <% end %>
+          <p>GMS Code: <%= org.gms_code %><br /></p>
         </div>
-        <div class="side_spacer"></div>
       </div>
-    </li>
+    <% end %>
 
-    <table class="table table-striped">
-    <thead>
-        <tr>
-          <th>
-            Organisation
-          </th>
-          <th style="width: 20%;">
-            <!-- Active / Make active -->
-          </th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @organisations.each do |org| %>
-            <tr>
-              <td>
-                <%= org.name %>
-              </td>
-              <td>
-                <% if org == @current_organisation %>
-                    Active
-                <% else %>
-                    <%= link_to 'Make active', "organisations/save_current_organisation?organisation_id=" + org.id.to_s, method: :post %>
-                <% end %>
-              </td>
-            </tr>
-        <% end %>
-    </tbody>
-    </table>
+    <div class="col-md-3 col-sm-6">
+      <div class="service-wrapper" onclick="javascript:window.location='organisations/new'" >
+        <%= image_tag 'service-icon/diamond.png' %>
+              <h3>+</h3>
+              <br />
+        <p>Create New Pharmacy</p>
+      </div>
+    </div>
+
 <% end %>

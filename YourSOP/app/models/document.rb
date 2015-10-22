@@ -55,10 +55,10 @@ def check_document_review_date
 end
 
 
-
-# Adding this new line
+def s3_credentials
+  # Adding this new line
  {:bucket => "saasproject", :access_key_id => "", :secret_access_key => ""}
- end def s3_credentials
+end 
   
 
 end

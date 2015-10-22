@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>YourSOP 1.0</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="container">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Your SOP</a>
-      </div>
-
-      <% if user_signed_in? %>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              
-                <li class="<% if controller?("documents") %> <%= 'active'%> <% end %>"><a href="<%= documents_path %>">Documents <span class="sr-only">(current)</span></a></li>
-
-                <% if if_current_user_is_quality %>
-                  <li class="<% if controller?("risks") %> <%= 'active'%> <% end %>"><a href="<%= risks_path %>">Topics <span class="sr-only">(current)</span></a></li>
-                <% end %>
-                <li class="<% if controller?("audits") %> <%= 'active'%> <% end %>"><a href="<%= audits_path %>">Audits <span class="sr-only">(current)</span></a></li>
-                <li class="<% if controller?("dashboard") %> <%= 'active'%> <% end %>"><a href="/dashboard/index">Dashboard <span class="sr-only">(current)</span></a></li>
+<!-- Navigation & Logo-->
+    <div class="mainmenu-wrapper">
+      <div class="container">
+        <div class="menuextras">
+          <div class="extras">
+            <ul>
+               <% if !user_signed_in? %>
+                <!-- <li><a href="/users/sign_in">Login</a></li> -->
+              <% end %>
             </ul>
+          </div>
+        </div>
+      <nav id="mainmenu" class="mainmenu">
+      <ul>
+        <li class="logo-wrapper">
+          <a href="/">YourSOP</a>
+        </li>
+
+        <% if user_signed_in? %>
+
+          <li class="<% if controller?("documents") %> <%= 'active'%> <% end %>">
+            <a href="<%= documents_path %>">Documents <span class="sr-only">(current)</span></a>
+          </li>
+
+           <% if if_current_user_is_quality %>
+              <li class="<% if controller?("risks") %> <%= 'active'%> <% end %>"><a href="<%= risks_path %>">Topics <span class="sr-only">(current)</span></a></li>
+            <% end %>
+            <li class="<% if controller?("audits") %> <%= 'active'%> <% end %>"><a href="<%= audits_path %>">Audits <span class="sr-only">(current)</span></a></li>
+            <li class="<% if controller?("dashboard") %> <%= 'active'%> <% end %>"><a href="/dashboard/index">Dashboard <span class="sr-only">(current)</span></a></li>
+
             <ul class="nav navbar-nav navbar-right">
               <% if @current_organisation != nil %>
                   <li><%= link_to @current_organisation.name, organisations_path %></li>
-                  <li class="dropdown">
+                  <li class="has-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       Settings
                       <span class="caret"></span></a>
@@ -56,30 +65,80 @@
                     </ul>
                   </li>
               <% end %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Signed in as <%= current_user.email %>
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><%= link_to 'Edit profile', main_app.edit_user_registration_path %></li>
-                </ul>
+              <li class="has-submenu">
+                <a href="#">Signed in as <%= current_user.name %> <span class="caret"></span></a>
+                <div class="mainmenu-submenu">
+                  <div class="mainmenu-submenu-inner">
+                    <div>
+                    <ul>
+                      <li><%= link_to 'Edit profile', main_app.edit_user_registration_path %></li>
+                    </ul>
+                    </div>
+                  </div>
+                </div>
+                
               </li>
               <li>
                 <%= link_to 'Sign out', '/users/sign_out', method: 'delete' %>
               </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-      <% end %>
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
-
-  <% flash.each do |key, value| %>
-      <div class="bg-warning alert alert-<%= key %>"><%= value %></div>
-  <% end %>
-
-  <%= yield %>
-
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 </div>
+
+<div class="section">
+    <div class="container">
+      <%= yield %>
+    </div>
+</div>
+
+
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-footer col-md-3 col-xs-6">
+        <h3>About YourSOP</h3>
+       <!--  <div class="portfolio-item">
+          <div class="portfolio-image">
+            <a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+          </div>
+        </div> -->
+      </div>
+      <div class="col-footer col-md-3 col-xs-6">
+        <h3>Navigate</h3>
+        <ul class="no-list-style footer-navigate-section">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-footer col-md-4 col-xs-6">
+        <h3>Contacts</h3>
+        <p class="contact-us-details">
+            <b>Address:</b> 123 AAA Street, Cork, Ireland<br/>
+            <b>Phone:</b> +11 1111 1111<br/>
+            <b>Fax:</b> +11 1111 1111<br/>
+            <b>Email:</b> <a href="mailto:YourSOP@YourSOP.com">YourSOP@YourSOP.com</a>
+          </p>
+      </div>
+      <div class="col-footer col-md-2 col-xs-6">
+        <h3>Stay Connected</h3>
+        <ul class="footer-stay-connected no-list-style">
+          <li><a href="#" class="facebook"></a></li>
+          <li><a href="#" class="twitter"></a></li>
+          <li><a href="#" class="googleplus"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="footer-copyright">&copy; 2015 YourSOP. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
