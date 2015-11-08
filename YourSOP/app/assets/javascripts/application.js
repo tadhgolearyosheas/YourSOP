@@ -22,3 +22,4 @@
 //= require tinymce
 //= require jquery_nested_form
 //= require jquery-tablesorter
+//= require bootstrap-multiselect

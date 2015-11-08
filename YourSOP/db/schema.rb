@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017235720) do
+ActiveRecord::Schema.define(version: 20151108015236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,6 +251,16 @@ ActiveRecord::Schema.define(version: 20151017235720) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "organisation_services", force: :cascade do |t|
+    t.integer  "organisation_id"
+    t.integer  "service_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "organisation_services", ["organisation_id"], name: "index_organisation_services_on_organisation_id", using: :btree
+  add_index "organisation_services", ["service_id"], name: "index_organisation_services_on_service_id", using: :btree
+
   create_table "organisation_users", force: :cascade do |t|
     t.boolean  "accepted"
     t.integer  "user_type"
@@ -333,6 +343,41 @@ ActiveRecord::Schema.define(version: 20151017235720) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "enabled"
+    t.integer  "sequence"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sops", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "services_id"
+    t.string   "content"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
+    t.string   "major_version"
+    t.string   "minor_version"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "sops", ["services_id"], name: "index_sops_on_services_id", using: :btree
+
+  create_table "topic_services", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "topic_services", ["service_id"], name: "index_topic_services_on_service_id", using: :btree
+  add_index "topic_services", ["topic_id"], name: "index_topic_services_on_topic_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"

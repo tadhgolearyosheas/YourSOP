@@ -62,6 +62,8 @@ GEM
     bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-multiselect-rails (0.9.9)
+      rails (>= 4.0.0)
     bootstrap-will_paginate (0.0.10)
       will_paginate
     bootstrap_form (2.3.0)
@@ -357,6 +359,7 @@ PLATFORMS
 DEPENDENCIES
   actionmailer
   aws-sdk (< 2.0)
+  bootstrap-multiselect-rails
   bootstrap-will_paginate
   bootstrap_form
   byebug
@@ -403,3 +406,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   webmock
   will_paginate
+
+BUNDLED WITH
+   1.10.6

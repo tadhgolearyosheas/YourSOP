@@ -71,6 +71,9 @@ gem 'aws-sdk', '< 2.0'
 #queuing system for rails 4.2+
 gem 'delayed_job_active_record'
 
+#multi_select
+gem 'bootstrap-multiselect-rails'
+
 #enable client side validation
 #gem 'html5_validators'
 

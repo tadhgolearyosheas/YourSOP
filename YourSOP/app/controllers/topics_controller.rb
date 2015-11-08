@@ -15,10 +15,14 @@ class TopicsController < ApplicationController
   # GET /topics/new
   def new
     @topic = Topic.new
+
+    setup_new
   end
 
   # GET /topics/1/edit
   def edit
+
+    setup_edit
   end
 
   # POST /topics
@@ -26,6 +30,16 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.organisation_id = current_organisation.id
+
+    if params[:services] != nil
+      service_ids = params[:services]
+      service_ids.each do |blah, action|
+        next if blah.blank?
+        blah2 = TopicService.new
+        blah2.service_id = blah.to_i
+        @topic.topic_services << blah2
+      end
+    end
 
     respond_to do |format|
       if @topic.save
@@ -41,6 +55,22 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1
   # PATCH/PUT /topics/1.json
   def update
+
+    topic_services =  @topic.topic_services.find_by_topic_id(@topic.id)
+      if topic_services.present?
+        topic_services.destroy
+      end
+
+    if params[:services] != nil
+      service_ids = params[:services]
+      service_ids.each do |blah, action|
+        next if blah.blank?
+        blah2 = TopicService.new
+        blah2.service_id = blah.to_i
+        @topic.topic_services << blah2
+      end
+    end
+
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
@@ -66,6 +96,21 @@ class TopicsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
       @topic = Topic.find(params[:id])
+    end
+
+    def setup_new
+      @existing_service_ids = []
+
+      @services = Service.all
+    end
+
+    def setup_edit
+      @existing_service_ids = []
+      @services = Service.all
+
+      @topic.topic_services.each do |s|
+        @existing_service_ids << s.service_id
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

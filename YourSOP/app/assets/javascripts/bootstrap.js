@@ -808,7 +808,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   }
 
   Modal.DEFAULTS = {
-    backdrop: true,
+    backdrop: false,
     keyboard: true,
     show: true
   }

@@ -1,26 +1,44 @@
-# User.create!([
-#   {id: 4, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "quality@1.com", encrypted_password: "$2a$10$sdd5c9JFM8I3N/g6G.i35.GvZd1X2FfSn2.Sr5x4y7UjhBR3aNBE.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-28 03:29:57", last_sign_in_at: "2015-05-28 03:29:57", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:30:05"},
-#   {id: 6, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "olivia@2.com", encrypted_password: "$2a$10$lRzWyghqQoKDyDPSA5mBrOx9i75llhIuQsgq9VoiNeAPJEmGJJ7ku", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-28 03:33:14", last_sign_in_at: "2015-05-28 03:33:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:34:49"},
-#   {id: 5, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "quality@2.com", encrypted_password: "$2a$10$z.OvcSI9FxC1E9UFX856PuchwktcmJCvSfovEFS4M.KlnSurgYcPC", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2015-05-28 03:35:26", last_sign_in_at: "2015-05-28 03:32:24", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:36:03"},
-#   {id: 2, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "mary@1.com", encrypted_password: "$2a$10$7.LeOTl9dqiPdLNAkBO8CeUX1rwireYGsOUP50fhidKYJSWE4NTsG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-28 03:28:40", last_sign_in_at: "2015-05-28 03:28:40", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:28:48"},
-#   {id: 7, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "ken@2.com", encrypted_password: "$2a$10$YdguJZlqNxAFQJSuq3VqpumkMaa/G/AllzNsfUeBi18BJRQAbm0kG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-05-28 03:41:48", last_sign_in_at: "2015-05-28 03:36:45", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:41:55"},
-#   {id: 3, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "bob@1.com", encrypted_password: "$2a$10$S/FwR/EzQt1fw7jrhx0F8u2qi6DSZ0pUML1wNZ5gOOAVW/vhl/lE.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-28 03:29:22", last_sign_in_at: "2015-05-28 03:29:22", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:29:35"},
-#   {id: 1, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "owner@1.com", encrypted_password: "$2a$10$3JdJqaW5V2vFuCYiBYFNBOWe3163Df4j7eZ5/oxTVt27yuF9j8D1i", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2015-05-28 03:42:03", last_sign_in_at: "2015-05-28 03:40:56", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-05-28 03:42:12"}
-# ])
-# Organisation.create!([
-#   {id: 1, name: "Pharmacy", user_id: 1},
-#   {id: 2, name: "Medical Advisor", user_id: 1}
-# ])
-# OrganisationUser.create!([
-#   {id: 1, accepted: true, user_type: 2, user_id: 1, organisation_id: 1, inviter_id: 1},
-#   {id: 2, accepted: true, user_type: 2, user_id: 1, organisation_id: 2, inviter_id: 1},
-#   {id: 3, accepted: true, user_type: 1, user_id: 2, organisation_id: 2, inviter_id: 1},
-#   {id: 4, accepted: true, user_type: 1, user_id: 3, organisation_id: 2, inviter_id: 1},
-#   {id: 5, accepted: true, user_type: 0, user_id: 4, organisation_id: 2, inviter_id: 1},
-#   {id: 6, accepted: true, user_type: 0, user_id: 5, organisation_id: 1, inviter_id: 1},
-#   {id: 7, accepted: true, user_type: 1, user_id: 6, organisation_id: 1, inviter_id: 1},
-#   {id: 8, accepted: true, user_type: 1, user_id: 7, organisation_id: 1, inviter_id: 1}
-# ])
+Delayed::Backend::ActiveRecord::Job.create!([
+  {id: 1, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 1968d2de-a12f-451f-a5e7-1c4f62b7a90c\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - Reviewer\n", last_error: nil, run_at: "2015-11-08 01:21:26", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 2, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: d38bd81b-8d80-4cce-9e06-182ab513c43d\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - Review\n", last_error: nil, run_at: "2015-11-08 01:21:26", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 3, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 3bde23d3-d5e6-4996-89ff-659743ad0f84\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - Approver\n", last_error: nil, run_at: "2015-11-08 01:21:26", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 4, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: e6656ed2-5d96-4747-ae25-9776dcdafa4b\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - User\n", last_error: nil, run_at: "2015-11-08 01:21:26", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 5, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: dee007dd-4ab5-4ada-8b3c-adc0cf0f608a\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - Approval\n", last_error: nil, run_at: "2015-11-08 01:25:24", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 6, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 9a236e76-9af6-4a95-9984-ca6c99a7d1b1\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - daniel.yuft@gmail.com\n  - Sign off\n", last_error: nil, run_at: "2015-11-08 01:25:31", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 7, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: ad1a2f1f-278d-4377-bd70-f75ebdcb1c32\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - doc_status\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Review of SOPs\n  - Approved\n", last_error: nil, run_at: "2015-11-08 01:25:32", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 8, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: dd1f3a18-1089-4e47-9096-bc912fc82184\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - Reviewer\n", last_error: nil, run_at: "2015-11-08 01:26:15", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 9, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 672172ee-1e9e-4011-98d0-24a448603e78\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - Review\n", last_error: nil, run_at: "2015-11-08 01:26:15", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 10, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: ead1afe9-7b78-44c8-8fca-30984c868a3e\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - Approver\n", last_error: nil, run_at: "2015-11-08 01:26:15", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 11, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 1ce39313-2816-4aa8-a4c5-c64f8b82bd4b\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - assign_role\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - User\n", last_error: nil, run_at: "2015-11-08 01:26:15", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 12, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: de9958d3-e656-47fa-adf6-ba2779dd3971\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - Approval\n", last_error: nil, run_at: "2015-11-08 01:26:26", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 13, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 86d55cdf-d756-4bff-bfc3-3aa2148efb18\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - do_action\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - daniel.yuft@gmail.com\n  - Sign off\n", last_error: nil, run_at: "2015-11-08 01:26:33", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"},
+  {id: 14, priority: 0, attempts: 0, handler: "--- !ruby/object:ActiveJob::QueueAdapters::DelayedJobAdapter::JobWrapper\njob_data:\n  job_class: ActionMailer::DeliveryJob\n  job_id: 0a6df4bf-363e-4a4d-84be-593eb7e5c056\n  queue_name: mailers\n  arguments:\n  - Notifier\n  - doc_status\n  - deliver_now\n  - daniel.yuft@gmail.com\n  - Pharmacist Absence\n  - Approved\n", last_error: nil, run_at: "2015-11-08 01:26:33", locked_at: nil, failed_at: nil, locked_by: nil, queue: "mailers"}
+])
+User.create!([
+  {id: 1, password: "12345678", doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, email: "daniel.yuft@gmail.com", encrypted_password: "$2a$10$xdcCzz0ZGQSV8dGs9L6qa.Y6bNAmFKZTpowK4OgczcH.IoWJVmlV2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2015-11-08 01:07:18", last_sign_in_at: "2015-11-06 00:00:28", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_seen_at: "2015-11-08 01:26:47", name: "Daniel"}
+])
+Approval.create!([
+  {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
+  {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
+])
+Document.create!([
+  {id: 1, title: "Review of SOPs", status: 3, content: "<p>tester123</p>", assigned_to_all: nil, user_id: 1, organisation_id: 1, document_type_id: nil, doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, major_version: "1", minor_version: "0", do_update: true, change_control: "Initial creation.", review_date: "2015-11-08", document_topic_id: nil, topic_id: 4},
+  {id: 2, title: "Pharmacist Absence", status: 3, content: "<p>test323234</p>", assigned_to_all: nil, user_id: 1, organisation_id: 1, document_type_id: nil, doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, major_version: "1", minor_version: "0", do_update: true, change_control: "Initial creation.", review_date: "2015-11-08", document_topic_id: nil, topic_id: 5}
+])
+DocumentRevision.create!([
+  {id: 1, major_version: 0, minor_version: 1, content: "<p>tester123</p>", change_control: "Initial creation.", document_id: 1},
+  {id: 2, major_version: 0, minor_version: 1, content: "<p>test323234</p>", change_control: "Initial creation.", document_id: 2}
+])
+Organisation.create!([
+  {id: 1, name: "default_pharmacy", user_id: nil, gms_code: "0000000"}
+])
+OrganisationUser.create!([
+  {id: 1, accepted: true, user_type: 2, user_id: 1, organisation_id: 1, inviter_id: 1}
+])
+Review.create!([
+  {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
+  {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
+])
 RisksImpact.create!([
   {id: 1, name: "Injury", impact: "Negligible", description: "Adverse event leading to minor injury not requiring first aid. <br /> No impaired Psychosocial functioning", value: 1},
   {id: 2, name: "Injury", impact: "Minor", description: "Minor injury or illness, first aid treatment required <br /> <3 days absence <br /> < 3 days extended hospital stay <br /> Impaired psychosocial functioning greater than 3 days less than one month", value: 2},
@@ -66,4 +84,29 @@ RisksImpact.create!([
   {id: 42, name: "", impact: "Minor", description: "", value: 2},
   {id: 43, name: "", impact: "Moderate", description: "", value: 3},
   {id: 44, name: "", impact: "Major", description: "", value: 4},
-  {id: 45, name: "", impact: "Extreme", description: "", value: 5}])
+  {id: 45, name: "", impact: "Extreme", description: "", value: 5}
+])
+Service.create!([
+  {id: 1, name: "Lipid screening services", description: "lipid screening serviceslipid screening services", enabled: true, sequence: 1},
+  {id: 2, name: "Seasonal influenza vaccination", description: "seasonal influenza vaccination", enabled: true, sequence: 2},
+  {id: 3, name: "A", description: "A", enabled: true, sequence: 3},
+  {id: 4, name: "B", description: "B", enabled: true, sequence: 4},
+  {id: 5, name: "C", description: "C", enabled: true, sequence: 5}
+])
+Topic.create!([
+  {id: 4, name: "General", description: "General", status: 1, organisation_id: 1, score: nil, last_audit_date: nil},
+  {id: 5, name: "Error/ Incident Management", description: "Error/ Incident Management", status: 1, organisation_id: 1, score: nil, last_audit_date: nil}
+])
+TopicService.create!([
+  {id: 1, topic_id: 4, service_id: 1},
+  {id: 2, topic_id: 4, service_id: 2},
+  {id: 3, topic_id: 4, service_id: 3},
+  {id: 4, topic_id: 4, service_id: 4},
+  {id: 5, topic_id: 4, service_id: 5},
+  {id: 6, topic_id: 5, service_id: 1},
+  {id: 7, topic_id: 5, service_id: 5}
+])
+Trainee.create!([
+  {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
+  {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
+])

@@ -31,4 +31,61 @@ $(document).ready(function () {
 		$("#invite").val("");
 	});
 
+	$("[name='chk_sop']").bootstrapSwitch();
+	$("[name='chk_include']").bootstrapSwitch("size", "mini");
+	$("[name='chk_include']").bootstrapSwitch("onText", "Yes");
+	$("[name='chk_include']").bootstrapSwitch("offText", "No");
+
+	$("select[name='sign_off_users'").multiselect();
+
+	$("#btn_save").click(function() {
+		var services = $("#services_table input:checkbox:checked").map(function(){
+	      return $(this).val();
+	    }).get();
+	    //console.log(JSON.stringify(services));
+
+	    $.ajax({
+		      type: "PUT",
+		      url: '/organisations/update_service',
+		      data: JSON.stringify(services),
+		      contentType: 'application/json',
+		      dataType: 'json',
+		      success: function(msg) {
+		      	console.log(msg);
+		        window.location = '/organisations/import';
+		      }
+		});
+	});
+
+	$("#btn_finish").click(function() {
+		var excluded_doc = $("input[name='chk_include']:not(:checked)").map(function() {
+			return $(this).val();
+		}).get();
+
+		var obj = {};
+		obj.excluded_doc = excluded_doc
+		obj.sign_off_users = [];
+		$('select option:selected').each(function() {
+			var doc_id = $(this).parent().attr("id").replace("assign_", "")
+			var user = {};
+			user.doc_id = doc_id
+			user.user_id = $(this).val();
+
+			obj.sign_off_users.push(user)
+		})
+		console.log(obj);
+
+		$.ajax({
+		      type: "PUT",
+		      url: '/organisations/update_sops',
+		      data: JSON.stringify(obj),
+		      contentType: 'application/json',
+		      dataType: 'json',
+		      success: function(msg) {
+		      	console.log(msg);
+		        window.location = '/documents';
+		      }
+		});
+	});
+
 });

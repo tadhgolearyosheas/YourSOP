@@ -1,0 +1,21 @@
+<div class="checkbox">
+   <label>
+        <input class="select_all" type="checkbox"/>All services
+   </label>
+</div>
+<div>
+<% services.each do |s| %>
+    <div class="col-sm-4">
+      <div class="checkbox">
+        <label>
+           <input name="[<%= params_hash %>][<%= s.id %>]" type="checkbox" 
+               <% if selected_services.include?(s.id) %>
+               checked
+               <% end %>
+               />
+            <%= s.name %>
+        </label>
+      </div>
+    </div>
+<% end %>
+</div>

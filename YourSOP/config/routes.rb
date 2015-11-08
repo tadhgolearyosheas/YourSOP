@@ -9,7 +9,10 @@ Rails.application.routes.draw do
       delete :remove_user
       get :edit_user
       put :update_user
-
+      get :services
+      put :update_service
+      get :import
+      put :update_sops
     end
     put :save_current_organisation#, :on => :collection
 

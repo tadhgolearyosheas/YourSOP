@@ -1,0 +1,67 @@
+
+<div class="row">
+	<div class="col-sm-8">
+		<h3>Tell us about any specialised services your pharmacy provides:</h3>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="shopping-cart" id="services_table">
+					<% @services.each do |s| %>
+						<tr>
+							<td class="image"><%= image_tag 'product1.jpg' %></td>
+							<td>
+								<div class="cart-item-title"><%= s.name %></div>
+								<div class="feature color">
+									Sops: <b>12</b>
+								</div>
+								<div class="feature"><%= s.description %></div>
+							</td>
+							<td class="quantity">
+							</td>
+							<td class="price"></td>
+							<td class="actions">
+								<input type="checkbox" name="chk_sop" value="<%= s.id %>"
+								<% if @selected_service.include?(s.id)%>
+								 checked
+								 <% end %> >
+							</td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">			
+			<!-- Shopping Cart Totals -->
+			<div class="col-md-12 col-md-offset-0 col-sm-6 col-sm-offset-6">
+				<table class="cart-totals">
+					<tr class="cart-grand-total">
+						<td><b>Selected Service</b></td>
+						<td>12</td>
+					</tr>
+					<tr class="cart-grand-total">
+						<td><b>SOPs</b></td>
+						<td>46</td>
+					</tr>
+				</table>
+				<!-- Action Buttons -->
+				<div class="pull-right">
+					<a href="#" class="btn" id="btn_save">Save</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-sm-4">
+		<h3>User Notes</h3>
+		<p>
+			Review the services which you provide at your pharmacy and we will ensure that you have SOPs in place to cover all of them. For example this could include ‘Provision of the seasonal influenza vaccination’ or ‘lipid screening’ services.
+		</p>
+		<p>
+			Keep in mind that SOPs are required to cover all aspects of the service rather than just the service itself – so for the two examples mentioned above, you would also require a ‘Disposal of clinical waste’ SOP as clinical waste would be dealt with.
+		</p>
+	</div>
+
+</div>
+
+

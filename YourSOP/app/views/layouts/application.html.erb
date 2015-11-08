@@ -11,7 +11,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
-
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -43,45 +42,42 @@
            <% if if_current_user_is_quality %>
               <li class="<% if controller?("risks") %> <%= 'active'%> <% end %>"><a href="<%= risks_path %>">Topics <span class="sr-only">(current)</span></a></li>
             <% end %>
-            <li class="<% if controller?("audits") %> <%= 'active'%> <% end %>"><a href="<%= audits_path %>">Audits <span class="sr-only">(current)</span></a></li>
+            <!-- <li class="<% if controller?("audits") %> <%= 'active'%> <% end %>"><a href="<%= audits_path %>">Audits <span class="sr-only">(current)</span></a></li> -->
             <li class="<% if controller?("dashboard") %> <%= 'active'%> <% end %>"><a href="/dashboard/index">Dashboard <span class="sr-only">(current)</span></a></li>
 
             <ul class="nav navbar-nav navbar-right">
               <% if @current_organisation != nil %>
                   <li><%= link_to @current_organisation.name, organisations_path %></li>
-                  <li class="has-submenu">
+                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       Settings
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                       <% if @current_user_is_owner %>
+                          <li><%= link_to 'Services', services_organisations_path %></li>                          
                           <li><%= link_to 'Manage users', users_organisations_path %></li>
                       <% else %>
                           <li><%= link_to 'View users', users_organisations_path %></li>
                       <% end %>
                       <% if if_current_user_is_quality %>
-+                          <li><%= link_to 'Manage Topics', topics_path %></li>
-+                      <% end %>
+                          <li><%= link_to 'Manage Topics', topics_path %></li>
+                      <% end %>
                     </ul>
                   </li>
-              <% end %>
-              <li class="has-submenu">
-                <a href="#">Signed in as <%= current_user.name %> <span class="caret"></span></a>
-                <div class="mainmenu-submenu">
-                  <div class="mainmenu-submenu-inner">
-                    <div>
-                    <ul>
+                  <% end %>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Signed in as <%= current_user.email %>
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
                       <li><%= link_to 'Edit profile', main_app.edit_user_registration_path %></li>
                     </ul>
-                    </div>
-                  </div>
-                </div>
-                
-              </li>
-              <li>
-                <%= link_to 'Sign out', '/users/sign_out', method: 'delete' %>
-              </li>
-        <% end %>
+                  </li>
+                  <li>
+                    <%= link_to 'Sign out', '/users/sign_out', method: 'delete' %>
+                  </li>
+            <% end %>
+            </ul>
+          </nav>
       </ul>
     </nav>
   </div>

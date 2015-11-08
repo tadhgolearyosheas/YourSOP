@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-sm-9">
+		<h3>Your Recommended Standard Operating Procedures:</h3>
+		<p>Based on the services your pharmacy provides, we recommend the following SOPs</p>
+
+		<table class="table table-striped table-bordered">
+		  <thead>
+		    <tr>
+		      <th>No.</th>
+		      <th>Topic</th>
+		      <th>SOP</th>
+		      <th>Include</th>
+		      <th>Status</th>
+		      <th>Assign</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% count = 1 %>
+		    <% @topics.each do |topic| %>
+		    	<% topic.documents.each do |doc| %>
+		    		<tr>
+				        <td><%= count %></td>
+				        <td><%= link_to topic.name, topic %></td>
+				        <td><%= doc.title %></td>
+				        <td>
+				        	<input type="checkbox" name="chk_include" value="<%= doc.id %>"
+								 checked />
+						</td>
+				        <td><%= status_to_string doc.status %></td>
+				        <td>
+				        	<select name="sign_off_users" id="assign_<%= doc.id %>" multiple="multiple">
+					        	<% @current_organisation.users.each do |u| %>
+					        		<option value="<%= u.id %>" selected><%= u.name %></option>
+					        	<% end%>
+				        	</select>
+				        	
+				        </td>
+				    </tr>
+				      <% count += 1 %>
+		    	<% end %>
+		      
+		    <% end %>
+		  </tbody>
+		</table>
+		<button class="btn btn-primary pull-right" id='btn_finish'>Finish</button>
+	</div>
+
+	<div class="col-sm-3">
+		<h3>User Notes</h3>
+		<p>
+			User notes: Based on the services you offer, the following is a list of SOPs that you should maintain.
+		</p>
+		<p>
+			Each SOP will initially be in draft mode. You will need to send for reviewal, and approval before becoming effective within your pharmacy.
+		</p>
+		<p>
+			By default each SOP will require sign-off by all staff members. This can be customised when you click into an SOP.
+		</p>
+	</div>
+</div>
