@@ -65,14 +65,19 @@ $(document).ready(function () {
 		var obj = {};
 		obj.excluded_doc = excluded_doc
 		obj.sign_off_users = [];
-		$('select option:selected').each(function() {
+		$("select[id^='assign'] option:selected").each(function() {
 			var doc_id = $(this).parent().attr("id").replace("assign_", "")
 			var user = {};
 			user.doc_id = doc_id
 			user.user_id = $(this).val();
 
+			$("select[id='status_" + doc_id + "'] option:selected").each(function() {
+				user.doc_status = $(this).val();
+			});
+
 			obj.sign_off_users.push(user)
-		})
+		});
+
 		console.log(obj);
 
 		$.ajax({

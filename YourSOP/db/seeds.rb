@@ -21,6 +21,10 @@ Approval.create!([
   {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
   {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
 ])
+Review.create!([
+  {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
+  {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
+])
 Document.create!([
   {id: 1, title: "Review of SOPs", status: 3, content: "<p>tester123</p>", assigned_to_all: nil, user_id: 1, organisation_id: 1, document_type_id: nil, doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, major_version: "1", minor_version: "0", do_update: true, change_control: "Initial creation.", review_date: "2015-11-08", document_topic_id: nil, topic_id: 4},
   {id: 2, title: "Pharmacist Absence", status: 3, content: "<p>test323234</p>", assigned_to_all: nil, user_id: 1, organisation_id: 1, document_type_id: nil, doc_file_name: nil, doc_content_type: nil, doc_file_size: nil, doc_updated_at: nil, major_version: "1", minor_version: "0", do_update: true, change_control: "Initial creation.", review_date: "2015-11-08", document_topic_id: nil, topic_id: 5}
@@ -34,10 +38,6 @@ Organisation.create!([
 ])
 OrganisationUser.create!([
   {id: 1, accepted: true, user_type: 2, user_id: 1, organisation_id: 1, inviter_id: 1}
-])
-Review.create!([
-  {id: 1, status: 1, document_id: 1, user_id: 1, major_version: 0, minor_version: 1},
-  {id: 2, status: 1, document_id: 2, user_id: 1, major_version: 0, minor_version: 1}
 ])
 RisksImpact.create!([
   {id: 1, name: "Injury", impact: "Negligible", description: "Adverse event leading to minor injury not requiring first aid. <br /> No impaired Psychosocial functioning", value: 1},

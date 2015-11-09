@@ -201,7 +201,7 @@ class OrganisationsController < ApplicationController
         new_doc.minor_version = d.minor_version
         new_doc.do_update = d.do_update
         new_doc.change_control = d.change_control
-        new_doc.review_date = d.review_date
+        new_doc.review_date = Time.now + 1.years
         #new_doc.document_topic_id = 
         new_topic.documents << new_doc
 
@@ -244,6 +244,7 @@ class OrganisationsController < ApplicationController
 
     obj["sign_off_users"].each do |d|
       doc = Document.find_by_id(d["doc_id"])
+      doc.update(:status => d["doc_status"])
 
       trainee = Trainee.new
       trainee.user_id = d["user_id"]

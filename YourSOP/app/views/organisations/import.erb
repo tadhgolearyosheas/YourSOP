@@ -27,7 +27,14 @@
 				        	<input type="checkbox" name="chk_include" value="<%= doc.id %>"
 								 checked />
 						</td>
-				        <td><%= status_to_string doc.status %></td>
+				        <td>
+				        	<select name="doc_status" id="status_<%= doc.id %>">
+				        		<option value="0">Draft</option>
+				        		<option value="1">For Review</option>
+				        		<option value="2">For Approval</option>
+				        		<option value="3" selected>Effective</option>
+				        	</select>
+				        </td>
 				        <td>
 				        	<select name="sign_off_users" id="assign_<%= doc.id %>" multiple="multiple">
 					        	<% @current_organisation.users.each do |u| %>
