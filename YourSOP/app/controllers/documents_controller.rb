@@ -291,7 +291,7 @@ class DocumentsController < ApplicationController
     end
 
     document = Document.find(params[:id].to_i)
-    if document.user_id != current_user.id or document.status != @@STATUS_APPROVED
+    if document.user_id != current_user.id || document.status != @@STATUS_APPROVED
       flash[:danger] = 'You cannot perform this operation.'
       redirect_to documents_path
     end
@@ -312,17 +312,15 @@ class DocumentsController < ApplicationController
       if params[:email] != current_user.email || !current_user.valid_password?(params[:password])   # if wrong email or password
         if params[:review] != nil
           document = Review.find(params[:relation_id].to_i).document
-          setup_show
-          flash[:danger] = 'Incorrect email or password.'
-          redirect_to document_path(document.id)
-          return
-        else
+        elsif params[:approve] != nil
           document = Approval.find(params[:relation_id].to_i).document
-          setup_show
-          flash[:danger] = 'Incorrect email or password.'
-          redirect_to document_path(document.id)
-          return
+        elsif params[:train] != nil
+          document = Trainee.find(params[:relation_id].to_i).document
         end
+        setup_show
+        flash[:danger] = 'Incorrect email or password.'
+        redirect_to document_path(document.id)
+        return
       end
     end
 
@@ -455,10 +453,13 @@ class DocumentsController < ApplicationController
     end
 
     @trainee_users = []
-
+    compliance = true
     trainees = Trainee.where(document_id: @document.id, major_version: max_major_version, minor_version: max_minor_version)
     trainees.each do |a|
       @trainee_users << {trainee: a, user: a.user}
+      if a.status != 1
+        compliance = false
+      end
     end
 
     @review = Review.find_by_user_id_and_document_id_and_major_version_and_minor_version current_user.id, @document.id, max_major_version, max_minor_version
@@ -473,6 +474,11 @@ class DocumentsController < ApplicationController
     elsif @trainee != nil
       @is_traineer = true
       @relation_id = @trainee.id
+    end
+
+    @compliance_status = 'COMPLIANT'
+    if compliance == false
+      @compliance_status = 'NOT ' + @compliance_status
     end
 
   end
@@ -614,7 +620,7 @@ class DocumentsController < ApplicationController
             or (status = 2 and exists(select 0 from approvals where document_id = documents.id and status = 0 and user_id = ?))
             or status = 3
              )"
-      Document.where(sql, get_current_organisation.id, current_user.id, current_user.id, current_user.id).order(status: :asc, created_at: :desc)
+      Document.where(sql, get_current_organisation.id, current_user.id, current_user.id, current_user.id).order(topic_id: :asc, status: :asc, created_at: :asc)
   end
 
   def get_signed_documents

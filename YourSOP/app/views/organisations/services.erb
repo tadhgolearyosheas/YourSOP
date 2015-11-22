@@ -1,4 +1,12 @@
 
+<% if @has_service %>
+<div class="row">
+	<pre>
+		Please Note: You have selected the services you provide, if you contintue, all SOPs in your pharmacy will be overwriten !
+	</pre>
+</div>
+<% end %>
+
 <div class="row">
 	<div class="col-sm-8">
 		<h3>Tell us about any specialised services your pharmacy provides:</h3>
@@ -43,6 +51,11 @@
 						<td>46</td>
 					</tr>
 				</table>
+				<% if @has_service %>
+					<div class="well">
+						Please Note: You have selected the services you provide, if you contintue, all SOPs in your pharmacy will be overwriten !
+					</div>
+				<% end %>
 				<!-- Action Buttons -->
 				<div class="pull-right">
 					<a href="#" class="btn" id="btn_save">Save</a>

@@ -2,7 +2,7 @@
     <%= form.alert_message "Please fix the errors below." %>
     <%= form.hidden_field :user_id, value: current_user_id %>
     <%= form.text_field :title %>
-    <%= form.date_select :review_date, start_year: Date.current.year %>
+    <%= form.date_select :review_date, start_year: Date.current.year + 1 %>
     <%= form.collection_select(:topic_id, topics, :id, :name, prompt: "Please Select") %>
     <br />
 

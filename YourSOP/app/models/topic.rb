@@ -9,5 +9,5 @@ class Topic < ActiveRecord::Base
   	has_many :topic_services
   	has_many :services, through: :topic_services
 
-	validates :name, :description, :status, presence: true
+	validates :name, :status, presence: true
 end

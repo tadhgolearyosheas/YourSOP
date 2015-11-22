@@ -10,7 +10,14 @@
 		      <th>Topic</th>
 		      <th>SOP</th>
 		      <th>Include</th>
-		      <th>Status</th>
+		      <th>Status
+		      	<!-- <select id="status_all">
+	        		<option value="0">Draft</option>
+	        		<option value="1">For Review</option>
+	        		<option value="2">For Approval</option>
+	        		<option value="3" selected>Effective</option>
+	        	</select> -->
+		      </th>
 		      <th>Assign</th>
 		    </tr>
 		  </thead>
@@ -29,9 +36,9 @@
 						</td>
 				        <td>
 				        	<select name="doc_status" id="status_<%= doc.id %>">
-				        		<option value="0">Draft</option>
+				        		<!-- <option value="0">Draft</option>
 				        		<option value="1">For Review</option>
-				        		<option value="2">For Approval</option>
+				        		<option value="2">For Approval</option> -->
 				        		<option value="3" selected>Effective</option>
 				        	</select>
 				        </td>
@@ -50,7 +57,7 @@
 		    <% end %>
 		  </tbody>
 		</table>
-		<button class="btn btn-primary pull-right" id='btn_finish'>Finish</button>
+		<button class="btn btn-primary pull-right" id='btn_finish' disable_with='Saving...' } >Finish</button>
 	</div>
 
 	<div class="col-sm-3">
@@ -58,9 +65,7 @@
 		<p>
 			User notes: Based on the services you offer, the following is a list of SOPs that you should maintain.
 		</p>
-		<p>
-			Each SOP will initially be in draft mode. You will need to send for reviewal, and approval before becoming effective within your pharmacy.
-		</p>
+		
 		<p>
 			By default each SOP will require sign-off by all staff members. This can be customised when you click into an SOP.
 		</p>

@@ -64,11 +64,11 @@
               <%= d.review_date %>
             </td>
             <td>
-              <% status = d.trainees.find_by_user_id(@current_user.id).status %>
-              <% if status == 0 %>
-                <%= link_to trainee_status_to_string(status), document_path(d.id) %>
+              <% status = d.trainees.find_by_user_id(@current_user.id) %>
+              <% if status.status == 0 %>
+                <%= link_to trainee_status_to_string(status.status, status.updated_at), document_path(d.id) %>
               <% else %>
-                <%= trainee_status_to_string status %>
+                <%= trainee_status_to_string status.status, status.updated_at %>
               <% end %>
             </td>
           </tr>

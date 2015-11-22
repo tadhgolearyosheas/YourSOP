@@ -1,8 +1,8 @@
 <div class="bs-docs-section">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading">My Tasks</div>
+        <div class="panel-heading">My Outstanding Actions</div>
         <div class="panel-body">
             <% if @my_actions.count() <= 0 and @documents_for_review.count() <= 0 and @documents_for_approval.count() <= 0 and @documents_for_trainee.count() <= 0 and @audits_for_review.count() <= 0 and @audits_for_approval.count() <= 0 %>
               <p>No task to do at the moment. :)</p>
@@ -140,7 +140,7 @@
         </div>
       </div>
     </div>
-     <div class="col-sm-4">
+     <!-- <div class="col-sm-4">
         <div class="panel panel-default">
           <div class="panel-heading">Audit Actions Require Your Action</div>
           <div class="panel-body">
@@ -201,15 +201,15 @@
               <% end %>
           </div>
         </div>
-      </div>
+      </div> -->
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-heading">My Profile</div>
         <div class="panel-body">
           <ul>
-            <li>Organisation: <%= @current_organisation.name %></li>
+            <li>Pharmacy: <%= @current_organisation.name %></li>
             <li>Email: <%= @current_user.email %></li>
-            <li>Role: <%= user_type_to_string OrganisationUser.where(organisation: @current_organisation, user: @current_user)[0].user_type %></li>
+           <!--  <li>Role: <%#= user_type_to_string OrganisationUser.where(organisation: @current_organisation, user: @current_user)[0].user_type %></li> -->
             <li>Last Sign In: <%= current_user.last_sign_in_at %></li>
             <li>Current Sign in IP: <%= request.remote_ip %> </li>
             <li>Last Sign In IP: <%=current_user.last_sign_in_ip%></li>

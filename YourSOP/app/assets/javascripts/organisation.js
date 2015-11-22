@@ -71,9 +71,9 @@ $(document).ready(function () {
 			user.doc_id = doc_id
 			user.user_id = $(this).val();
 
-			$("select[id='status_" + doc_id + "'] option:selected").each(function() {
-				user.doc_status = $(this).val();
-			});
+			// $("select[id='status_" + doc_id + "'] option:selected").each(function() {
+			// 	user.doc_status = $(this).val();
+			// });
 
 			obj.sign_off_users.push(user)
 		});
@@ -92,5 +92,12 @@ $(document).ready(function () {
 		      }
 		});
 	});
+
+	// $("#status_all").on("change", function() {
+	// 	var val = $("#status_all").val();
+	// 	$("select[name=doc_status]").each(function() {
+	// 		$(this).val(val);
+	// 	});
+	// });
 
 });

@@ -96,4 +96,15 @@ class ApplicationController < ActionController::Base
     current_user.update_attribute(:last_seen_at, Time.now)
   end
 
+  def compliance_rate
+    @compliance_rate = 0
+    if @current_organisation != nil
+      compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 1", @current_organisation.id).count()
+      not_compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 0", @current_organisation.id).count()
+      if (compliance_count + not_compliance_count != 0)
+        @compliance_rate = compliance_rate / (compliance_rate + not_compliance_count)
+      end
+    end
+  end
+
 end

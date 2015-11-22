@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       put :update_service
       get :import
       put :update_sops
+      get :browse
     end
     put :save_current_organisation#, :on => :collection
 
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
 
 
   match 'organisations/invite', to: 'organisations#inviteSubmission', via: :post
+  match 'organisations/join/:id' => 'organisations#join', via: :get
 
   #match "your_documents" => 'documents#your_documents', via: :post, as: 'your_documents'
   #match "your_actions" => 'documents#your_actions', via: :post, as: 'your_actions'
@@ -93,6 +95,7 @@ Rails.application.routes.draw do
   match "topic_risk_trend" => "dashboard#topic_risk_trend", via: :get, as: 'topic_risk_trend'
   match "document_status" => "dashboard#document_status", via: :get, as: 'document_status'
   match "audit_result" => "dashboard#audit_result", via: :get, as: 'audit_result'
+  match "compliance_rate" => "dashboard#compliance_rate", via: :get, as: 'compliance_rate'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,23 @@
+<h3>Here are pharmacies you could join:</h3>
+
+<% @organisations.each do |org| %>
+	<div class="col-md-4 col-sm-6">
+		<div class="portfolio-item">
+			<div class="portfolio-image">
+				<a href="#"><%= image_tag 'portfolio1.jpg' %></a>
+			</div>
+			<div class="portfolio-info">
+				<ul>
+					<li class="portfolio-project-name"><%= org.name %></li>
+					<li><%= org.gms_code%></li>
+					<li>Join time: <%= org.created_at %></li>
+					<% if @org_users.include? org.id %>
+						<li class="read-more"><a href="#" class="btn btn-grey">Already a member</a></li>
+					<% else %>
+						<li class="read-more"><a href="/organisations/join/<%= org.id %>" class="btn">Join</a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end %>

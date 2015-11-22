@@ -30,4 +30,8 @@ class DashboardController < ApplicationController
 		render json: Audit.joins(:topic).where("topics.organisation_id = ? and audits.start_date > CURRENT_DATE - 365", @current_organisation.id).group("case audits.result when 1 then 'Green' when 2 then 'Amber' when 3 then 'Red' end ").count
 	end
 
+	def compliance_rate
+		render json: Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version", @current_organisation.id).group("case trainees.status when 0 then 'Not Compliance' when 1 then 'Compliance' end").count()
+	end
+
 end

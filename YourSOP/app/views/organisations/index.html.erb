@@ -38,22 +38,22 @@
 
 <% if @organisations.empty? %>
     <h3>You are not a member of any pharmacies, here are your options:</h3>
-    <div class="col-sm-6">
-      <h4>Setup a new pharmacy</h4>
-
-      <%= bootstrap_form_for @organisation, :url => {:controller => "organisations", :action => "create"}  do |form| %>
-          <%= form.hidden_field :user_id, value: @current_user_id %>
-          <%= form.text_field :name %>
-           <%= form.text_field :gms_code %>
-          <div class="actions">
-            <%= form.submit "Create", class: "btn btn-primary" %>
-          </div>
-      <% end %>
+    <div class="col-sm-8">
+      <div class="basic-login">
+        <%= bootstrap_form_for @organisation, :url => {:controller => "organisations", :action => "create"}  do |form| %>
+            <%= form.hidden_field :user_id, value: @current_user_id %>
+            <%= form.text_field :name %>
+             <%= form.text_field :gms_code %>
+            <div class="actions">
+              <%= form.submit "Create", class: "btn btn-primary" %>
+              Or
+              <a href="organisations/browse" >Join an existing pharmacy</a>
+            </div>
+        <% end %>
+      </div>     
     </div>
-    <div class="col-sm-6">
-      <h4>Join an existing pharmacy</h4>
-
-
+    <div class="col-sm-4">
+      <p>Here is some explaination</p>
     </div>
     
 <% else %>
@@ -66,12 +66,18 @@
           <%= image_tag 'service-icon/diamond.png' %>
            <% if org == @current_organisation %>
                 <h3><%= org.name %></h3>
-                <%= link_to 'View users', users_organisations_path %>
+                <%= link_to 'View Staffs', users_organisations_path %>
             <% else %>
                 <h3><%= org.name %></h3>
-                <%= link_to 'Make active', "organisations/save_current_organisation?organisation_id=" + org.id.to_s, method: :post %>
+                <%= link_to 'Select', "organisations/save_current_organisation?organisation_id=" + org.id.to_s, method: :post %>
             <% end %>
           <p>GMS Code: <%= org.gms_code %><br /></p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                    70%
+                  </div>
+                </div>
         </div>
       </div>
     <% end %>
@@ -80,6 +86,8 @@
       <div class="service-wrapper" onclick="javascript:window.location='organisations/new'" >
         <%= image_tag 'service-icon/diamond.png' %>
               <h3>+</h3>
+              <br />
+              <br />
               <br />
         <p>Create New Pharmacy</p>
       </div>

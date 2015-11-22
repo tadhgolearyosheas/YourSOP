@@ -13,13 +13,13 @@ module DocumentsHelper
     end
   end
 
-  def approval_status_to_string status
+  def approval_status_to_string status, updated_at
     if status == 0
       'Pending'
     elsif status == 1
-      'Approved'
+      'Approved(' + updated_at.to_s + ')'
     elsif status == 2
-      'Declined'
+      'Declined(' + updated_at.to_s + ')'
     elsif status == 3
       'Canceled'
     else
@@ -27,21 +27,21 @@ module DocumentsHelper
     end
   end
 
-  def review_status_to_string status
+  def review_status_to_string status, updated_at
     if status == 0
       'Pending'
     elsif status == 1
-      'Reviewed'
+      updated_at.to_s
     else
       'Unknown'
     end
   end
 
-  def trainee_status_to_string status
+  def trainee_status_to_string status, updated_at
     if status == 0
       'Pending'
     elsif status == 1
-      'Signed Off'
+      updated_at.to_s
     else
       'Unknown'
     end

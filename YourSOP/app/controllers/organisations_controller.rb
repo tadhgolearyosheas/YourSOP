@@ -2,6 +2,8 @@ class OrganisationsController < ApplicationController
   # autocomplete :user, :email
   respond_to :json
 
+  before_action :check_current_organisation, only: [:invite, :services]
+
   def index
     prepare_index
 
@@ -151,6 +153,8 @@ class OrganisationsController < ApplicationController
       @selected_service << s.service_id
     end
 
+    @has_service = !@selected_service.empty?
+
   end
 
   def update_service
@@ -180,10 +184,9 @@ class OrganisationsController < ApplicationController
       new_topic.description = topic.description
       new_topic.status = topic.status
       new_topic.organisation_id = get_current_organisation.id
-      #new_topic.save
 
       #copy documents
-      doc = Document.where(:organisation_id => default_org_id, :topic_id => t)
+      doc = Document.where(:organisation_id => default_org_id, :topic_id => t, :status => 3)
       doc.each do |d|
         new_doc = Document.new
         new_doc.title = d.title
@@ -232,34 +235,49 @@ class OrganisationsController < ApplicationController
   end
 
   def import
-    @topics = Topic.where(:organisation_id => get_current_organisation.id)
+    @topics = Topic.where(:organisation_id => get_current_organisation.id).order(created_at: :asc)
   end
 
   def update_sops
     obj = JSON.parse(request.raw_post)
 
     obj["excluded_doc"].each do |d|
-      Document.find_by_id(d).destroy()
+      Document.find_by_id(d).destroy
     end
 
     obj["sign_off_users"].each do |d|
+
+
       doc = Document.find_by_id(d["doc_id"])
-      doc.update(:status => d["doc_status"])
+      if !doc.nil?
+        #doc.update(:status => d["doc_status"])
 
-      trainee = Trainee.new
-      trainee.user_id = d["user_id"]
-      trainee.status = 0
-      trainee.major_version = doc.major_version
-      trainee.minor_version = doc.minor_version
-      trainee.document_id = doc.id
-      trainee.save
-
+        trainee = Trainee.new
+        trainee.user_id = d["user_id"]
+        trainee.status = 0
+        trainee.major_version = doc.major_version
+        trainee.minor_version = doc.minor_version
+        trainee.document_id = doc.id
+        trainee.save
+      end
+      
     end
 
     respond_to do |format|
       format.json { render :json => obj }
     end
   end
+
+  def browse
+    @organisations = Organisation.where.not(name: "default_pharmacy")
+
+    @org_users = OrganisationUser.where(user_id: current_user.id)
+  end
+
+  def join
+
+  end
+
   private
 
   def prepare_index
@@ -279,6 +297,12 @@ class OrganisationsController < ApplicationController
     end
 
     my_organisations = OrganisationUser.where(user_id: current_user.id)
+
+    if my_organisations.length == 1 && get_current_organisation.nil?
+      set_current_organisation_id my_organisations.first().organisation_id
+      redirect_to "/"      # call index action
+    end
+
     @organisations = []
     @organisation_invitations= []
     my_organisations.each do |ou|

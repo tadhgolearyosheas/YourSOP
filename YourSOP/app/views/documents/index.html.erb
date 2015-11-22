@@ -1,7 +1,7 @@
-<h1>Documents</h1>
+<h1>SOPs</h1>
 <%if !@current_user_is_basic %>
     <form action="<%= new_document_path %>">
-      <button type="submit" class="btn btn-success" style="float: right;">Create a new document</button>
+      <button type="submit" class="btn btn-success" style="float: right;">Create New</button>
     </form>
     <br />
 <% end %>
@@ -9,13 +9,13 @@
 
 
 <!-- tab content -->
-<div class="col-md-12">
-  <ul class="nav nav-tabs" id="document_filter_buttons">
-    <li id="allDocFilter" role="presentation" class="active" <%= selected_document_filter if @initial_document_filter == "all_documents" %>><%= link_to "All Documents", "#" %></li>
-    <li id="yourDocFilter" role="presentation" <%= selected_document_filter if @initial_document_filter == "your_documents" %>><%= link_to " Documents Signed By Me", "#" %></li>
+<div class="col-md-12 tabbable">
+  <ul class="nav nav-tabs product-details-nav" id="document_filter_buttons">
+    <li id="allDocFilter" role="presentation" class="active" <%= selected_document_filter if @initial_document_filter == "all_documents" %>><%= link_to "All SOPs", "#" %></li>
+    <li id="yourDocFilter" role="presentation" <%= selected_document_filter if @initial_document_filter == "your_documents" %>><%= link_to " SOPs Signed By Me", "#" %></li>
   </ul>
-  <div class="tab-content">
-    <div class="tab-pane text-style active" id="tab0">
+  <div class="tab-content product-detail-info">
+    <div class="tab-pane  active" id="tab0">
       <%= render partial: 'list', locals: {documents: @documents} %>    
     </div>
 

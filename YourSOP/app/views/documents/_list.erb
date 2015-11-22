@@ -38,7 +38,7 @@
               <%= link_to d.title, document_path(d.id) %>
             </td>
             <td>
-              <%= d.user.email %>
+              <%= d.user.name %>
             </td>
             <td>
               <%= d.created_at %>
@@ -67,7 +67,7 @@
               <%= link_to "Review", document_path(:id => d.id), :class => "btn-link" if d.status == 1 and d.reviews.where(status: 0,  user_id: @current_user.id).count > 0 %>
               <%= link_to "Approve", document_path(:id => d.id), :class => "btn-link" if d.status == 2 and d.approvals.where(status: 0,  user_id: @current_user.id).count > 0 %>
               <%= link_to "Sign Off", document_path(:id => d.id), :class => "btn-link" if d.status == 3 and d.trainees.where(status: 0,  user_id: @current_user.id).count > 0 %>
-                <%= link_to "Revert To Draft", revert_to_draft_path(:id => d.id), method: :post, remote: true, data: { confirm: 'Are you sure?' }, :class => "btn-link" if d.status == 3 and d.user_id == @current_user.id  %>
+                <%= link_to "Revert To Draft", revert_to_draft_path(:id => d.id), method: :post, remote: true, data: { confirm: 'Are you sure to revert this document to draft?' }, :class => "btn-link" if d.status == 3 and d.user_id == @current_user.id  %>
             </td>
           </tr>
       <% end %>

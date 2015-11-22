@@ -2,28 +2,29 @@
   <div class="row">
     <div class="col-sm-6">
        <div class="panel panel-default">
-          <div class="panel-heading">Topic Risk Trend (Past 12 Months)</div>
+          <div class="panel-heading">Document Status</div>
           <div class="panel-body">
-            <%= line_chart topic_risk_trend_path, discrete: true %>
+            <%= pie_chart document_status_path %>
+           
           </div>
         </div>
     </div>
     <div class="col-sm-6">
        <div class="panel panel-default">
-          <div class="panel-heading">Audits This Year (Past 12 Months)</div>
+          <div class="panel-heading">Compliance At Galance</div>
           <div class="panel-body">
-            <%= pie_chart audit_this_year_path %>
+            <%= pie_chart compliance_rate_path %>
           </div>
         </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" style="display:none">
     <div class="col-sm-6">
        <div class="panel panel-default">
           <div class="panel-heading">Document Status</div>
           <div class="panel-body">
-            <%= pie_chart document_status_path %>
+            <%#= line_chart topic_risk_trend_path, discrete: true %>
           </div>
         </div>
     </div>
@@ -31,28 +32,11 @@
        <div class="panel panel-default">
           <div class="panel-heading">Audits Result (Past 12 Months)</div>
           <div class="panel-body">
-            <%= pie_chart audit_result_path, colors: ["#FF7E00", "green", "red"] %>
+            <%#= pie_chart audit_result_path, colors: ["#FF7E00", "green", "red"] %>
           </div>
         </div>
     </div>
   </div>
-
-  <ul class="nav nav-tabs" data-tabs="tabs">
-    <li id="allDocFilter" role="presentation" class="active"><a href="#tab0" data-toggle="tab">Audit Report</a></li>
-    <li id="yourDocFilter" role="presentation"><a href="#tab1" data-toggle="tab">Audit Actions</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade in active"  id="tab0">
-        <br />
-       <%= render partial: 'audit', locals: {report: @audit_report.run} %>
-    </div>
-
-    <div class="tab-pane text-style" id="tab1">
-        <br />
-       <%= render partial: 'audit_action', locals: {report: @audit_action.run} %>
-    </div>
-  </div>
-
 
 </div>
 
