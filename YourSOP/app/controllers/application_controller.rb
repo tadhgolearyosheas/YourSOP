@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :setup_header
   helper_method :current_organisation
+  before_action :compliancerate
   before_filter :set_last_seen_at, if: proc {user_signed_in?}
   
   public
@@ -96,14 +97,16 @@ class ApplicationController < ActionController::Base
     current_user.update_attribute(:last_seen_at, Time.now)
   end
 
-  def compliance_rate
+  def compliancerate
     @compliance_rate = 0
-    if @current_organisation != nil
-      compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 1", @current_organisation.id).count()
-      not_compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 0", @current_organisation.id).count()
+    if session[:current_organisation_id] != nil
+      compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 1", session[:current_organisation_id].to_i).count("documents.id")
+      not_compliance_count = Trainee.joins(:document).where("documents.id = trainees.document_id and documents.status = 3 and documents.organisation_id = ? and documents.minor_version :: Integer = trainees.minor_version and documents.major_version :: Integer = trainees.major_version and trainees.status = 0", session[:current_organisation_id].to_i).count("documents.id")
+      #@compliance_rate = compliance_count
       if (compliance_count + not_compliance_count != 0)
-        @compliance_rate = compliance_rate / (compliance_rate + not_compliance_count)
+        @compliance_rate = (compliance_count.to_f / (compliance_count + not_compliance_count) * 100).round(2)
       end
+
     end
   end
 

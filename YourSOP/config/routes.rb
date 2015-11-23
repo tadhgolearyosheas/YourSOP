@@ -47,7 +47,13 @@ Rails.application.routes.draw do
 
 
   match 'organisations/save_current_organisation', to: 'organisations#save_current_organisation', via: :post
+  
   match "organisations/accept_organisation_invitation", to: 'organisations#accept_organisation_invitation', via: :post
+  match "organisations/decline_organisation_invitation", to: 'organisations#decline_organisation_invitation', via: :post
+
+
+  match "organisations/accept_organisation_application", to: 'organisations#accept_organisation_application', via: :post
+  match "organisations/decline_organisation_application", to: 'organisations#decline_organisation_application', via: :post
 
 
   match 'organisations/invite', to: 'organisations#inviteSubmission', via: :post

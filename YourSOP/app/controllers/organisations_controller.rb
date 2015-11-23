@@ -38,7 +38,7 @@ class OrganisationsController < ApplicationController
     if ( !@current_user_is_owner and @current_user_is_quality)
       redirect_to :organisations, notice: 'Only owners and quality manager can invite users.'
     end
-    @typesOptions = [['Quality', 0], ['Basic', 1], ['Owner', 2]]
+    #@typesOptions = [['Quality', 0], ['Basic', 1], ['Owner', 2]]
     @users = []
     users = User.all
     users.each do |u|
@@ -56,9 +56,10 @@ class OrganisationsController < ApplicationController
       # Users not registered yet
       pending_user = PendingUser.new
       pending_user.email = selected_email
-      pending_user.user_type = params[:organisation_user][:typesSelection].to_i
+      pending_user.user_type = 1 #params[:organisation_user][:typesSelection].to_i
       pending_user.inviter_id = current_user.id
       pending_user.organisation_id = get_current_organisation.id
+      pending_user.pending_type = 0
       pending_user.save
 
       Notifier.org_invite(selected_email, Organisation.find(pending_user.organisation_id).name, User.find(pending_user.inviter_id).email, params[:organisation_user][:message]).deliver_now
@@ -70,7 +71,7 @@ class OrganisationsController < ApplicationController
         invited_user.user_id = User.where(email: selected_email).first.id
         invited_user.organisation_id = get_current_organisation.id
         invited_user.accepted = false
-        invited_user.user_type = params[:organisation_user][:typesSelection].to_i
+        invited_user.user_type = 1 #params[:organisation_user][:typesSelection].to_i
         invited_user.inviter_id = current_user.id
         invited_user.save
 
@@ -101,6 +102,9 @@ class OrganisationsController < ApplicationController
       @pending_users << u
     end
 
+
+    @applied_users = PendingUser.where(organisation_id: get_current_organisation.id, pending_type: 1)
+
   end
 
   def save_current_organisation
@@ -119,6 +123,33 @@ class OrganisationsController < ApplicationController
     ou = OrganisationUser.find_by_user_id_and_organisation_id(current_user.id, params[:organisation_id].to_i)
     ou.destroy
     redirect_to :organisations, notice: "Invitation to organisation declined."      # call index action
+  end
+
+  def accept_organisation_application
+    pending_user = PendingUser.find_by_id(params[:pending_user_id])
+
+    if pending_user != nil
+      ou = OrganisationUser.new
+      ou.accepted = true
+      ou.user_type = 1
+      ou.user_id = pending_user.inviter_id
+      ou.organisation_id = get_current_organisation.id
+      ou.inviter_id = pending_user.inviter_id
+      ou.save
+
+      pending_user.destroy
+
+      redirect_to "/organisations/users"
+    end
+  end
+
+  def decline_organisation_application
+    pending_user = PendingUser.find_by_id(params[:pending_user_id])
+    if pending_user != nil
+      pending_user.destroy
+    end
+
+    redirect_to "/organisations/users"
   end
 
   def remove_user
@@ -272,16 +303,28 @@ class OrganisationsController < ApplicationController
     @organisations = Organisation.where.not(name: "default_pharmacy")
 
     @org_users = OrganisationUser.where(user_id: current_user.id)
+
+    @pending_users = PendingUser.where(pending_type: 1)
   end
 
   def join
+    org_id = params[:id]
 
+    pending_user = PendingUser.new
+    pending_user.email = current_user.email
+    pending_user.user_type = 1
+    pending_user.organisation_id = org_id
+    pending_user.inviter_id = current_user.id
+    pending_user.pending_type = 1
+    pending_user.save
+
+    redirect_to "/organisations" 
   end
 
   private
 
   def prepare_index
-    pending_user = PendingUser.where(email: current_user.email).first
+    pending_user = PendingUser.where(email: current_user.email, pending_type: 0).first
     if !pending_user.nil?
       # Current user is in the PendingUser table
       # Automatically make current user of the organisation
@@ -312,7 +355,6 @@ class OrganisationsController < ApplicationController
         @organisation_invitations << Organisation.find(ou.organisation_id)
       end
     end
-
   end
 
   def organisation_params

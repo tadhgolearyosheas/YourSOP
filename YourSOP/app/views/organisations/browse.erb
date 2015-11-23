@@ -10,9 +10,12 @@
 				<ul>
 					<li class="portfolio-project-name"><%= org.name %></li>
 					<li><%= org.gms_code%></li>
-					<li>Join time: <%= org.created_at %></li>
+					<li>Create At: <%= org.created_at %></li>
 					<% if @org_users.include? org.id %>
 						<li class="read-more"><a href="#" class="btn btn-grey">Already a member</a></li>
+					<% elsif @pending_users != nil && @pending_users.where(organisation_id: org.id).count() > 0 && @pending_users.where(email: @current_user.email).count() > 0
+						 %>
+						<li class="read-more"><a href="#" class="btn btn-grey">Application Submitted</a></li>
 					<% else %>
 						<li class="read-more"><a href="/organisations/join/<%= org.id %>" class="btn">Join</a></li>
 					<% end %>
