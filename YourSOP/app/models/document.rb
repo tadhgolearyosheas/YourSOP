@@ -6,10 +6,10 @@ class Document < ActiveRecord::Base
   belongs_to :user
   belongs_to :organisation
   has_many :approvals
-  validates_presence_of :approvals
+  #validates_presence_of :approvals
 
   has_many :reviews
-  validates_presence_of :reviews
+  #validates_presence_of :reviews
 
   has_many :readers
   has_many :trainees
